@@ -1,7 +1,11 @@
 import {useQuery} from "urql";
 import {ProjectsListQuery} from "../queries/project";
 
-export function TestClient() {
+interface Props {
+  onClick: (projectId: string) => void;
+}
+
+export function TestClient({onClick}: Props) {
   const [result] = useQuery({
     query: ProjectsListQuery,
   });
@@ -14,7 +18,9 @@ export function TestClient() {
   return (
     <div>
       {data!.projects.map((project) => (
-        <div key={project.id}>{project.name}</div>
+        <button onClick={() => onClick(project.id)} key={project.id}>
+          {project.name}
+        </button>
       ))}
     </div>
   );

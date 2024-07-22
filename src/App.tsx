@@ -1,6 +1,8 @@
 import {cacheExchange, Client, fetchExchange, Provider} from "urql";
 import "./App.css";
-import {TestClient} from "./components/test";
+import {TestClient} from "./components/ProjectsList";
+import {useState} from "react";
+import {ProjectDetail} from "./components/ProjectDetail";
 
 const client = new Client({
   url: "https://eu-central-1.cdn.hygraph.com/content/cl7rij5cj669q01uhae8r9wkh/master",
@@ -8,9 +10,18 @@ const client = new Client({
 });
 
 function App() {
+  const [activeId, setActiveId] = useState<string | null>(null);
+
   return (
     <Provider value={client}>
-      <TestClient />
+      <div>
+        <TestClient onClick={(id) => setActiveId(id)} />
+      </div>
+      {activeId && (
+        <div>
+          <ProjectDetail id={activeId} />
+        </div>
+      )}
     </Provider>
   );
 }

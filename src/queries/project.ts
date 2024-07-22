@@ -9,29 +9,29 @@ export const ProjectsListQuery = graphql(`
   }
 `);
 
-// export const ProjectQuery = graphql(`
-//   query ProjectQuery($id: ID!) {
-//     project(where: {id: $id}) {
-//       name
-//       id
-//       date
-//       description {
-//         ... on Paragraph {
-//           id
-//           content {
-//             html
-//             text
-//           }
-//         }
-//       }
-//       slug
-//       client
-//       images {
-//         url
-//         size
-//         id
-//         height
-//       }
-//     }
-//   }
-// `);
+export const ProjectQuery = graphql(`
+  query ProjectQuery($id: ID!) {
+    project(where: {id: $id}) {
+      name
+      id
+      date
+      description {
+        ... on Paragraph {
+          id
+          content {
+            html
+            text
+          }
+        }
+      }
+      slug
+      client
+      images {
+        url
+        size
+        id
+        height
+      }
+    }
+  }
+`);
