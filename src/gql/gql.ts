@@ -13,8 +13,8 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
-    "\n  query ProjectsListQuery {\n    projects {\n      id\n      name\n    }\n  }\n": types.ProjectsListQueryDocument,
-    "\n  query ProjectQuery($id: ID!) {\n    project(where: {id: $id}) {\n      name\n      id\n      date\n      description {\n        ... on Paragraph {\n          id\n          content {\n            html\n            text\n          }\n        }\n      }\n      slug\n      client\n      images {\n        url\n        size\n        id\n        height\n      }\n    }\n  }\n": types.ProjectQueryDocument,
+    "\n  query ProjectsListQuery {\n    projects {\n      slug\n      id\n      name\n      date\n      thumb {\n        id\n        fileName\n        url\n      }\n      categories {\n        slug\n        label\n        projects {\n          slug\n        }\n      }\n    }\n  }\n": types.ProjectsListQueryDocument,
+    "\n  query ProjectQuery($slug: String!) {\n    project(where: { slug: $slug }) {\n      slug\n      id\n      name\n      date\n      description {\n        ... on Paragraph {\n          id\n          content {\n            html\n            text\n          }\n        }\n        ... on Link {\n          id\n          label\n          url\n        }\n      }\n      client\n      images {\n        url\n        size\n        id\n        height\n        fileName\n      }\n    }\n  }\n": types.ProjectQueryDocument,
 };
 
 /**
@@ -34,11 +34,11 @@ export function graphql(source: string): unknown;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query ProjectsListQuery {\n    projects {\n      id\n      name\n    }\n  }\n"): (typeof documents)["\n  query ProjectsListQuery {\n    projects {\n      id\n      name\n    }\n  }\n"];
+export function graphql(source: "\n  query ProjectsListQuery {\n    projects {\n      slug\n      id\n      name\n      date\n      thumb {\n        id\n        fileName\n        url\n      }\n      categories {\n        slug\n        label\n        projects {\n          slug\n        }\n      }\n    }\n  }\n"): (typeof documents)["\n  query ProjectsListQuery {\n    projects {\n      slug\n      id\n      name\n      date\n      thumb {\n        id\n        fileName\n        url\n      }\n      categories {\n        slug\n        label\n        projects {\n          slug\n        }\n      }\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query ProjectQuery($id: ID!) {\n    project(where: {id: $id}) {\n      name\n      id\n      date\n      description {\n        ... on Paragraph {\n          id\n          content {\n            html\n            text\n          }\n        }\n      }\n      slug\n      client\n      images {\n        url\n        size\n        id\n        height\n      }\n    }\n  }\n"): (typeof documents)["\n  query ProjectQuery($id: ID!) {\n    project(where: {id: $id}) {\n      name\n      id\n      date\n      description {\n        ... on Paragraph {\n          id\n          content {\n            html\n            text\n          }\n        }\n      }\n      slug\n      client\n      images {\n        url\n        size\n        id\n        height\n      }\n    }\n  }\n"];
+export function graphql(source: "\n  query ProjectQuery($slug: String!) {\n    project(where: { slug: $slug }) {\n      slug\n      id\n      name\n      date\n      description {\n        ... on Paragraph {\n          id\n          content {\n            html\n            text\n          }\n        }\n        ... on Link {\n          id\n          label\n          url\n        }\n      }\n      client\n      images {\n        url\n        size\n        id\n        height\n        fileName\n      }\n    }\n  }\n"): (typeof documents)["\n  query ProjectQuery($slug: String!) {\n    project(where: { slug: $slug }) {\n      slug\n      id\n      name\n      date\n      description {\n        ... on Paragraph {\n          id\n          content {\n            html\n            text\n          }\n        }\n        ... on Link {\n          id\n          label\n          url\n        }\n      }\n      client\n      images {\n        url\n        size\n        id\n        height\n        fileName\n      }\n    }\n  }\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};

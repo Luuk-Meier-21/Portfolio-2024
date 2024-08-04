@@ -1,19 +1,34 @@
-import {graphql} from "../gql";
+import { graphql } from "../gql";
 
 export const ProjectsListQuery = graphql(`
   query ProjectsListQuery {
     projects {
+      slug
       id
       name
+      date
+      thumb {
+        id
+        fileName
+        url
+      }
+      categories {
+        slug
+        label
+        projects {
+          slug
+        }
+      }
     }
   }
 `);
 
 export const ProjectQuery = graphql(`
-  query ProjectQuery($id: ID!) {
-    project(where: {id: $id}) {
-      name
+  query ProjectQuery($slug: String!) {
+    project(where: { slug: $slug }) {
+      slug
       id
+      name
       date
       description {
         ... on Paragraph {
@@ -23,14 +38,19 @@ export const ProjectQuery = graphql(`
             text
           }
         }
+        ... on Link {
+          id
+          label
+          url
+        }
       }
-      slug
       client
       images {
         url
         size
         id
         height
+        fileName
       }
     }
   }
