@@ -927,7 +927,7 @@ export type Asset = Entity & Node & {
   /** The unique identifier */
   id: Scalars['ID']['output'];
   imagesProject: Array<Project>;
-  imagesProject_dep: Array<Project_Dep>;
+  imagesProject_b: Array<Project_B>;
   /** System Locale field */
   locale: Locale;
   /** Get the other localizations for this document */
@@ -943,7 +943,7 @@ export type Asset = Entity & Node & {
   size?: Maybe<Scalars['Float']['output']>;
   /** System stage field */
   stage: Stage;
-  thumbProject: Array<Project>;
+  thumbProject_b: Array<Project_B>;
   /** The time the document was updated */
   updatedAt: Scalars['DateTime']['output'];
   /** User that last updated this document */
@@ -999,16 +999,16 @@ export type AssetImagesProjectArgs = {
 
 
 /** Asset system model */
-export type AssetImagesProject_DepArgs = {
+export type AssetImagesProject_BArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
   first?: InputMaybe<Scalars['Int']['input']>;
   forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   locales?: InputMaybe<Array<Locale>>;
-  orderBy?: InputMaybe<Project_DepOrderByInput>;
+  orderBy?: InputMaybe<Project_BOrderByInput>;
   skip?: InputMaybe<Scalars['Int']['input']>;
-  where?: InputMaybe<Project_DepWhereInput>;
+  where?: InputMaybe<Project_BWhereInput>;
 };
 
 
@@ -1046,16 +1046,16 @@ export type AssetScheduledInArgs = {
 
 
 /** Asset system model */
-export type AssetThumbProjectArgs = {
+export type AssetThumbProject_BArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
   first?: InputMaybe<Scalars['Int']['input']>;
   forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   locales?: InputMaybe<Array<Locale>>;
-  orderBy?: InputMaybe<ProjectOrderByInput>;
+  orderBy?: InputMaybe<Project_BOrderByInput>;
   skip?: InputMaybe<Scalars['Int']['input']>;
-  where?: InputMaybe<ProjectWhereInput>;
+  where?: InputMaybe<Project_BWhereInput>;
 };
 
 
@@ -1100,12 +1100,12 @@ export type AssetCreateInput = {
   handle: Scalars['String']['input'];
   height?: InputMaybe<Scalars['Float']['input']>;
   imagesProject?: InputMaybe<ProjectCreateManyInlineInput>;
-  imagesProject_dep?: InputMaybe<Project_DepCreateManyInlineInput>;
+  imagesProject_b?: InputMaybe<Project_BCreateManyInlineInput>;
   /** Inline mutations for managing document localizations excluding the default locale */
   localizations?: InputMaybe<AssetCreateLocalizationsInput>;
   mimeType?: InputMaybe<Scalars['String']['input']>;
   size?: InputMaybe<Scalars['Float']['input']>;
-  thumbProject?: InputMaybe<ProjectCreateManyInlineInput>;
+  thumbProject_b?: InputMaybe<Project_BCreateManyInlineInput>;
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
   width?: InputMaybe<Scalars['Float']['input']>;
 };
@@ -1203,9 +1203,9 @@ export type AssetManyWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']['input']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']['input']>;
-  imagesProject_dep_every?: InputMaybe<Project_DepWhereInput>;
-  imagesProject_dep_none?: InputMaybe<Project_DepWhereInput>;
-  imagesProject_dep_some?: InputMaybe<Project_DepWhereInput>;
+  imagesProject_b_every?: InputMaybe<Project_BWhereInput>;
+  imagesProject_b_none?: InputMaybe<Project_BWhereInput>;
+  imagesProject_b_some?: InputMaybe<Project_BWhereInput>;
   imagesProject_every?: InputMaybe<ProjectWhereInput>;
   imagesProject_none?: InputMaybe<ProjectWhereInput>;
   imagesProject_some?: InputMaybe<ProjectWhereInput>;
@@ -1228,9 +1228,9 @@ export type AssetManyWhereInput = {
   scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
-  thumbProject_every?: InputMaybe<ProjectWhereInput>;
-  thumbProject_none?: InputMaybe<ProjectWhereInput>;
-  thumbProject_some?: InputMaybe<ProjectWhereInput>;
+  thumbProject_b_every?: InputMaybe<Project_BWhereInput>;
+  thumbProject_b_none?: InputMaybe<Project_BWhereInput>;
+  thumbProject_b_some?: InputMaybe<Project_BWhereInput>;
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
   /** All values greater than the given value. */
   updatedAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -1285,12 +1285,12 @@ export type AssetUpdateInput = {
   handle?: InputMaybe<Scalars['String']['input']>;
   height?: InputMaybe<Scalars['Float']['input']>;
   imagesProject?: InputMaybe<ProjectUpdateManyInlineInput>;
-  imagesProject_dep?: InputMaybe<Project_DepUpdateManyInlineInput>;
+  imagesProject_b?: InputMaybe<Project_BUpdateManyInlineInput>;
   /** Manage document localizations */
   localizations?: InputMaybe<AssetUpdateLocalizationsInput>;
   mimeType?: InputMaybe<Scalars['String']['input']>;
   size?: InputMaybe<Scalars['Float']['input']>;
-  thumbProject?: InputMaybe<ProjectUpdateManyInlineInput>;
+  thumbProject_b?: InputMaybe<Project_BUpdateManyInlineInput>;
   width?: InputMaybe<Scalars['Float']['input']>;
 };
 
@@ -1519,9 +1519,9 @@ export type AssetWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']['input']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']['input']>;
-  imagesProject_dep_every?: InputMaybe<Project_DepWhereInput>;
-  imagesProject_dep_none?: InputMaybe<Project_DepWhereInput>;
-  imagesProject_dep_some?: InputMaybe<Project_DepWhereInput>;
+  imagesProject_b_every?: InputMaybe<Project_BWhereInput>;
+  imagesProject_b_none?: InputMaybe<Project_BWhereInput>;
+  imagesProject_b_some?: InputMaybe<Project_BWhereInput>;
   imagesProject_every?: InputMaybe<ProjectWhereInput>;
   imagesProject_none?: InputMaybe<ProjectWhereInput>;
   imagesProject_some?: InputMaybe<ProjectWhereInput>;
@@ -1578,9 +1578,9 @@ export type AssetWhereInput = {
   size_not?: InputMaybe<Scalars['Float']['input']>;
   /** All values that are not contained in given list. */
   size_not_in?: InputMaybe<Array<InputMaybe<Scalars['Float']['input']>>>;
-  thumbProject_every?: InputMaybe<ProjectWhereInput>;
-  thumbProject_none?: InputMaybe<ProjectWhereInput>;
-  thumbProject_some?: InputMaybe<ProjectWhereInput>;
+  thumbProject_b_every?: InputMaybe<Project_BWhereInput>;
+  thumbProject_b_none?: InputMaybe<Project_BWhereInput>;
+  thumbProject_b_some?: InputMaybe<Project_BWhereInput>;
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
   /** All values greater than the given value. */
   updatedAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -1641,7 +1641,7 @@ export type BatchPayload = {
 
 export type Category = Entity & Node & {
   __typename?: 'Category';
-  copyOfcopyOfprojectsxEYae9DR: Array<Project>;
+  copyOfcopyOfprojectsxEYae9DR: Array<Project_B>;
   /** The time the document was created */
   createdAt: Scalars['DateTime']['output'];
   /** User that created this document */
@@ -1653,7 +1653,7 @@ export type Category = Entity & Node & {
   /** The unique identifier */
   id: Scalars['ID']['output'];
   label?: Maybe<Scalars['String']['output']>;
-  projects: Array<Project_Dep>;
+  projects: Array<Project>;
   /** The time the document was published. Null on documents in draft stage. */
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
   /** User that last published this document */
@@ -1676,9 +1676,9 @@ export type CategoryCopyOfcopyOfprojectsxEYae9DrArgs = {
   forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   locales?: InputMaybe<Array<Locale>>;
-  orderBy?: InputMaybe<ProjectOrderByInput>;
+  orderBy?: InputMaybe<Project_BOrderByInput>;
   skip?: InputMaybe<Scalars['Int']['input']>;
-  where?: InputMaybe<ProjectWhereInput>;
+  where?: InputMaybe<Project_BWhereInput>;
 };
 
 
@@ -1709,9 +1709,9 @@ export type CategoryProjectsArgs = {
   forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   locales?: InputMaybe<Array<Locale>>;
-  orderBy?: InputMaybe<Project_DepOrderByInput>;
+  orderBy?: InputMaybe<ProjectOrderByInput>;
   skip?: InputMaybe<Scalars['Int']['input']>;
-  where?: InputMaybe<Project_DepWhereInput>;
+  where?: InputMaybe<ProjectWhereInput>;
 };
 
 
@@ -1756,10 +1756,10 @@ export type CategoryConnection = {
 };
 
 export type CategoryCreateInput = {
-  copyOfcopyOfprojectsxEYae9DR?: InputMaybe<ProjectCreateManyInlineInput>;
+  copyOfcopyOfprojectsxEYae9DR?: InputMaybe<Project_BCreateManyInlineInput>;
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   label?: InputMaybe<Scalars['String']['input']>;
-  projects?: InputMaybe<Project_DepCreateManyInlineInput>;
+  projects?: InputMaybe<ProjectCreateManyInlineInput>;
   slug?: InputMaybe<Scalars['String']['input']>;
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };
@@ -1797,9 +1797,9 @@ export type CategoryManyWhereInput = {
   OR?: InputMaybe<Array<CategoryWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']['input']>;
-  copyOfcopyOfprojectsxEYae9DR_every?: InputMaybe<ProjectWhereInput>;
-  copyOfcopyOfprojectsxEYae9DR_none?: InputMaybe<ProjectWhereInput>;
-  copyOfcopyOfprojectsxEYae9DR_some?: InputMaybe<ProjectWhereInput>;
+  copyOfcopyOfprojectsxEYae9DR_every?: InputMaybe<Project_BWhereInput>;
+  copyOfcopyOfprojectsxEYae9DR_none?: InputMaybe<Project_BWhereInput>;
+  copyOfcopyOfprojectsxEYae9DR_some?: InputMaybe<Project_BWhereInput>;
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -1857,9 +1857,9 @@ export type CategoryManyWhereInput = {
   label_not_starts_with?: InputMaybe<Scalars['String']['input']>;
   /** All values starting with the given string. */
   label_starts_with?: InputMaybe<Scalars['String']['input']>;
-  projects_every?: InputMaybe<Project_DepWhereInput>;
-  projects_none?: InputMaybe<Project_DepWhereInput>;
-  projects_some?: InputMaybe<Project_DepWhereInput>;
+  projects_every?: InputMaybe<ProjectWhereInput>;
+  projects_none?: InputMaybe<ProjectWhereInput>;
+  projects_some?: InputMaybe<ProjectWhereInput>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
   /** All values greater than the given value. */
   publishedAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -1932,9 +1932,9 @@ export enum CategoryOrderByInput {
 }
 
 export type CategoryUpdateInput = {
-  copyOfcopyOfprojectsxEYae9DR?: InputMaybe<ProjectUpdateManyInlineInput>;
+  copyOfcopyOfprojectsxEYae9DR?: InputMaybe<Project_BUpdateManyInlineInput>;
   label?: InputMaybe<Scalars['String']['input']>;
-  projects?: InputMaybe<Project_DepUpdateManyInlineInput>;
+  projects?: InputMaybe<ProjectUpdateManyInlineInput>;
   slug?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -2018,9 +2018,9 @@ export type CategoryWhereInput = {
   OR?: InputMaybe<Array<CategoryWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']['input']>;
-  copyOfcopyOfprojectsxEYae9DR_every?: InputMaybe<ProjectWhereInput>;
-  copyOfcopyOfprojectsxEYae9DR_none?: InputMaybe<ProjectWhereInput>;
-  copyOfcopyOfprojectsxEYae9DR_some?: InputMaybe<ProjectWhereInput>;
+  copyOfcopyOfprojectsxEYae9DR_every?: InputMaybe<Project_BWhereInput>;
+  copyOfcopyOfprojectsxEYae9DR_none?: InputMaybe<Project_BWhereInput>;
+  copyOfcopyOfprojectsxEYae9DR_some?: InputMaybe<Project_BWhereInput>;
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -2078,9 +2078,9 @@ export type CategoryWhereInput = {
   label_not_starts_with?: InputMaybe<Scalars['String']['input']>;
   /** All values starting with the given string. */
   label_starts_with?: InputMaybe<Scalars['String']['input']>;
-  projects_every?: InputMaybe<Project_DepWhereInput>;
-  projects_none?: InputMaybe<Project_DepWhereInput>;
-  projects_some?: InputMaybe<Project_DepWhereInput>;
+  projects_every?: InputMaybe<ProjectWhereInput>;
+  projects_none?: InputMaybe<ProjectWhereInput>;
+  projects_some?: InputMaybe<ProjectWhereInput>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
   /** All values greater than the given value. */
   publishedAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -2265,7 +2265,7 @@ export enum EntityTypeName {
   LinkDep = 'Link_dep',
   Paragraph = 'Paragraph',
   Project = 'Project',
-  ProjectDep = 'Project_dep',
+  ProjectB = 'Project_b',
   Reference = 'Reference',
   /** Scheduled Operation system model */
   ScheduledOperation = 'ScheduledOperation',
@@ -2447,14 +2447,14 @@ export enum LinkOrderByInput {
   UrlDesc = 'url_DESC'
 }
 
-export type LinkParent = Project;
+export type LinkParent = Project_B;
 
 export type LinkParentConnectInput = {
-  Project?: InputMaybe<ProjectConnectInput>;
+  Project_b?: InputMaybe<Project_BConnectInput>;
 };
 
 export type LinkParentCreateInput = {
-  Project?: InputMaybe<ProjectCreateInput>;
+  Project_b?: InputMaybe<Project_BCreateInput>;
 };
 
 export type LinkParentCreateManyInlineInput = {
@@ -2472,7 +2472,7 @@ export type LinkParentCreateOneInlineInput = {
 };
 
 export type LinkParentUpdateInput = {
-  Project?: InputMaybe<ProjectUpdateInput>;
+  Project_b?: InputMaybe<Project_BUpdateInput>;
 };
 
 export type LinkParentUpdateManyInlineInput = {
@@ -2493,7 +2493,7 @@ export type LinkParentUpdateManyInlineInput = {
 };
 
 export type LinkParentUpdateManyWithNestedWhereInput = {
-  Project?: InputMaybe<ProjectUpdateManyWithNestedWhereInput>;
+  Project_b?: InputMaybe<Project_BUpdateManyWithNestedWhereInput>;
 };
 
 export type LinkParentUpdateOneInlineInput = {
@@ -2512,19 +2512,19 @@ export type LinkParentUpdateOneInlineInput = {
 };
 
 export type LinkParentUpdateWithNestedWhereUniqueInput = {
-  Project?: InputMaybe<ProjectUpdateWithNestedWhereUniqueInput>;
+  Project_b?: InputMaybe<Project_BUpdateWithNestedWhereUniqueInput>;
 };
 
 export type LinkParentUpsertWithNestedWhereUniqueInput = {
-  Project?: InputMaybe<ProjectUpsertWithNestedWhereUniqueInput>;
+  Project_b?: InputMaybe<Project_BUpsertWithNestedWhereUniqueInput>;
 };
 
 export type LinkParentWhereInput = {
-  Project?: InputMaybe<ProjectWhereInput>;
+  Project_b?: InputMaybe<Project_BWhereInput>;
 };
 
 export type LinkParentWhereUniqueInput = {
-  Project?: InputMaybe<ProjectWhereUniqueInput>;
+  Project_b?: InputMaybe<Project_BWhereUniqueInput>;
 };
 
 export type LinkUpdateInput = {
@@ -3196,8 +3196,8 @@ export type Mutation = {
   createLink_dep?: Maybe<Link_Dep>;
   /** Create one project */
   createProject?: Maybe<Project>;
-  /** Create one project_dep */
-  createProject_dep?: Maybe<Project_Dep>;
+  /** Create one project_b */
+  createProject_b?: Maybe<Project_B>;
   /** Create one reference */
   createReference?: Maybe<Reference>;
   /** Create one scheduledRelease */
@@ -3255,12 +3255,12 @@ export type Mutation = {
   /** Delete many Project documents, return deleted documents */
   deleteManyProjectsConnection: ProjectConnection;
   /**
-   * Delete many Project_dep documents
-   * @deprecated Please use the new paginated many mutation (deleteManyProjects_depConnection)
+   * Delete many Project_b documents
+   * @deprecated Please use the new paginated many mutation (deleteManyProjects_bConnection)
    */
-  deleteManyProjects_dep: BatchPayload;
-  /** Delete many Project_dep documents, return deleted documents */
-  deleteManyProjects_depConnection: Project_DepConnection;
+  deleteManyProjects_b: BatchPayload;
+  /** Delete many Project_b documents, return deleted documents */
+  deleteManyProjects_bConnection: Project_BConnection;
   /**
    * Delete many Reference documents
    * @deprecated Please use the new paginated many mutation (deleteManyReferencesConnection)
@@ -3270,8 +3270,8 @@ export type Mutation = {
   deleteManyReferencesConnection: ReferenceConnection;
   /** Delete one project from _all_ existing stages. Returns deleted document. */
   deleteProject?: Maybe<Project>;
-  /** Delete one project_dep from _all_ existing stages. Returns deleted document. */
-  deleteProject_dep?: Maybe<Project_Dep>;
+  /** Delete one project_b from _all_ existing stages. Returns deleted document. */
+  deleteProject_b?: Maybe<Project_B>;
   /** Delete one reference from _all_ existing stages. Returns deleted document. */
   deleteReference?: Maybe<Reference>;
   /** Delete and return scheduled operation */
@@ -3331,12 +3331,12 @@ export type Mutation = {
   /** Publish many Project documents */
   publishManyProjectsConnection: ProjectConnection;
   /**
-   * Publish many Project_dep documents
-   * @deprecated Please use the new paginated many mutation (publishManyProjects_depConnection)
+   * Publish many Project_b documents
+   * @deprecated Please use the new paginated many mutation (publishManyProjects_bConnection)
    */
-  publishManyProjects_dep: BatchPayload;
-  /** Publish many Project_dep documents */
-  publishManyProjects_depConnection: Project_DepConnection;
+  publishManyProjects_b: BatchPayload;
+  /** Publish many Project_b documents */
+  publishManyProjects_bConnection: Project_BConnection;
   /**
    * Publish many Reference documents
    * @deprecated Please use the new paginated many mutation (publishManyReferencesConnection)
@@ -3346,8 +3346,8 @@ export type Mutation = {
   publishManyReferencesConnection: ReferenceConnection;
   /** Publish one project */
   publishProject?: Maybe<Project>;
-  /** Publish one project_dep */
-  publishProject_dep?: Maybe<Project_Dep>;
+  /** Publish one project_b */
+  publishProject_b?: Maybe<Project_B>;
   /** Publish one reference */
   publishReference?: Maybe<Reference>;
   /** Schedule to publish one about */
@@ -3362,8 +3362,8 @@ export type Mutation = {
   schedulePublishLink_dep?: Maybe<Link_Dep>;
   /** Schedule to publish one project */
   schedulePublishProject?: Maybe<Project>;
-  /** Schedule to publish one project_dep */
-  schedulePublishProject_dep?: Maybe<Project_Dep>;
+  /** Schedule to publish one project_b */
+  schedulePublishProject_b?: Maybe<Project_B>;
   /** Schedule to publish one reference */
   schedulePublishReference?: Maybe<Reference>;
   /** Unpublish one about from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -3378,8 +3378,8 @@ export type Mutation = {
   scheduleUnpublishLink_dep?: Maybe<Link_Dep>;
   /** Unpublish one project from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishProject?: Maybe<Project>;
-  /** Unpublish one project_dep from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
-  scheduleUnpublishProject_dep?: Maybe<Project_Dep>;
+  /** Unpublish one project_b from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  scheduleUnpublishProject_b?: Maybe<Project_B>;
   /** Unpublish one reference from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishReference?: Maybe<Reference>;
   /** Unpublish one about from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -3435,12 +3435,12 @@ export type Mutation = {
   /** Find many Project documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyProjectsConnection: ProjectConnection;
   /**
-   * Unpublish many Project_dep documents
-   * @deprecated Please use the new paginated many mutation (unpublishManyProjects_depConnection)
+   * Unpublish many Project_b documents
+   * @deprecated Please use the new paginated many mutation (unpublishManyProjects_bConnection)
    */
-  unpublishManyProjects_dep: BatchPayload;
-  /** Find many Project_dep documents that match criteria in specified stage and unpublish from target stages */
-  unpublishManyProjects_depConnection: Project_DepConnection;
+  unpublishManyProjects_b: BatchPayload;
+  /** Find many Project_b documents that match criteria in specified stage and unpublish from target stages */
+  unpublishManyProjects_bConnection: Project_BConnection;
   /**
    * Unpublish many Reference documents
    * @deprecated Please use the new paginated many mutation (unpublishManyReferencesConnection)
@@ -3450,8 +3450,8 @@ export type Mutation = {
   unpublishManyReferencesConnection: ReferenceConnection;
   /** Unpublish one project from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishProject?: Maybe<Project>;
-  /** Unpublish one project_dep from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
-  unpublishProject_dep?: Maybe<Project_Dep>;
+  /** Unpublish one project_b from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  unpublishProject_b?: Maybe<Project_B>;
   /** Unpublish one reference from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishReference?: Maybe<Reference>;
   /** Update one about */
@@ -3507,12 +3507,12 @@ export type Mutation = {
   /** Update many Project documents */
   updateManyProjectsConnection: ProjectConnection;
   /**
-   * Update many projects_dep
-   * @deprecated Please use the new paginated many mutation (updateManyProjects_depConnection)
+   * Update many projects_b
+   * @deprecated Please use the new paginated many mutation (updateManyProjects_bConnection)
    */
-  updateManyProjects_dep: BatchPayload;
-  /** Update many Project_dep documents */
-  updateManyProjects_depConnection: Project_DepConnection;
+  updateManyProjects_b: BatchPayload;
+  /** Update many Project_b documents */
+  updateManyProjects_bConnection: Project_BConnection;
   /**
    * Update many references
    * @deprecated Please use the new paginated many mutation (updateManyReferencesConnection)
@@ -3522,8 +3522,8 @@ export type Mutation = {
   updateManyReferencesConnection: ReferenceConnection;
   /** Update one project */
   updateProject?: Maybe<Project>;
-  /** Update one project_dep */
-  updateProject_dep?: Maybe<Project_Dep>;
+  /** Update one project_b */
+  updateProject_b?: Maybe<Project_B>;
   /** Update one reference */
   updateReference?: Maybe<Reference>;
   /** Update one scheduledRelease */
@@ -3540,8 +3540,8 @@ export type Mutation = {
   upsertLink_dep?: Maybe<Link_Dep>;
   /** Upsert one project */
   upsertProject?: Maybe<Project>;
-  /** Upsert one project_dep */
-  upsertProject_dep?: Maybe<Project_Dep>;
+  /** Upsert one project_b */
+  upsertProject_b?: Maybe<Project_B>;
   /** Upsert one reference */
   upsertReference?: Maybe<Reference>;
 };
@@ -3577,8 +3577,8 @@ export type MutationCreateProjectArgs = {
 };
 
 
-export type MutationCreateProject_DepArgs = {
-  data: Project_DepCreateInput;
+export type MutationCreateProject_BArgs = {
+  data: Project_BCreateInput;
 };
 
 
@@ -3707,18 +3707,18 @@ export type MutationDeleteManyProjectsConnectionArgs = {
 };
 
 
-export type MutationDeleteManyProjects_DepArgs = {
-  where?: InputMaybe<Project_DepManyWhereInput>;
+export type MutationDeleteManyProjects_BArgs = {
+  where?: InputMaybe<Project_BManyWhereInput>;
 };
 
 
-export type MutationDeleteManyProjects_DepConnectionArgs = {
+export type MutationDeleteManyProjects_BConnectionArgs = {
   after?: InputMaybe<Scalars['ID']['input']>;
   before?: InputMaybe<Scalars['ID']['input']>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
-  where?: InputMaybe<Project_DepManyWhereInput>;
+  where?: InputMaybe<Project_BManyWhereInput>;
 };
 
 
@@ -3742,8 +3742,8 @@ export type MutationDeleteProjectArgs = {
 };
 
 
-export type MutationDeleteProject_DepArgs = {
-  where: Project_DepWhereUniqueInput;
+export type MutationDeleteProject_BArgs = {
+  where: Project_BWhereUniqueInput;
 };
 
 
@@ -3909,13 +3909,13 @@ export type MutationPublishManyProjectsConnectionArgs = {
 };
 
 
-export type MutationPublishManyProjects_DepArgs = {
+export type MutationPublishManyProjects_BArgs = {
   to?: Array<Stage>;
-  where?: InputMaybe<Project_DepManyWhereInput>;
+  where?: InputMaybe<Project_BManyWhereInput>;
 };
 
 
-export type MutationPublishManyProjects_DepConnectionArgs = {
+export type MutationPublishManyProjects_BConnectionArgs = {
   after?: InputMaybe<Scalars['ID']['input']>;
   before?: InputMaybe<Scalars['ID']['input']>;
   first?: InputMaybe<Scalars['Int']['input']>;
@@ -3923,7 +3923,7 @@ export type MutationPublishManyProjects_DepConnectionArgs = {
   last?: InputMaybe<Scalars['Int']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
   to?: Array<Stage>;
-  where?: InputMaybe<Project_DepManyWhereInput>;
+  where?: InputMaybe<Project_BManyWhereInput>;
 };
 
 
@@ -3951,9 +3951,9 @@ export type MutationPublishProjectArgs = {
 };
 
 
-export type MutationPublishProject_DepArgs = {
+export type MutationPublishProject_BArgs = {
   to?: Array<Stage>;
-  where: Project_DepWhereUniqueInput;
+  where: Project_BWhereUniqueInput;
 };
 
 
@@ -4014,11 +4014,11 @@ export type MutationSchedulePublishProjectArgs = {
 };
 
 
-export type MutationSchedulePublishProject_DepArgs = {
+export type MutationSchedulePublishProject_BArgs = {
   releaseAt?: InputMaybe<Scalars['DateTime']['input']>;
   releaseId?: InputMaybe<Scalars['String']['input']>;
   to?: Array<Stage>;
-  where: Project_DepWhereUniqueInput;
+  where: Project_BWhereUniqueInput;
 };
 
 
@@ -4080,11 +4080,11 @@ export type MutationScheduleUnpublishProjectArgs = {
 };
 
 
-export type MutationScheduleUnpublishProject_DepArgs = {
+export type MutationScheduleUnpublishProject_BArgs = {
   from?: Array<Stage>;
   releaseAt?: InputMaybe<Scalars['DateTime']['input']>;
   releaseId?: InputMaybe<Scalars['String']['input']>;
-  where: Project_DepWhereUniqueInput;
+  where: Project_BWhereUniqueInput;
 };
 
 
@@ -4240,13 +4240,13 @@ export type MutationUnpublishManyProjectsConnectionArgs = {
 };
 
 
-export type MutationUnpublishManyProjects_DepArgs = {
+export type MutationUnpublishManyProjects_BArgs = {
   from?: Array<Stage>;
-  where?: InputMaybe<Project_DepManyWhereInput>;
+  where?: InputMaybe<Project_BManyWhereInput>;
 };
 
 
-export type MutationUnpublishManyProjects_DepConnectionArgs = {
+export type MutationUnpublishManyProjects_BConnectionArgs = {
   after?: InputMaybe<Scalars['ID']['input']>;
   before?: InputMaybe<Scalars['ID']['input']>;
   first?: InputMaybe<Scalars['Int']['input']>;
@@ -4254,7 +4254,7 @@ export type MutationUnpublishManyProjects_DepConnectionArgs = {
   last?: InputMaybe<Scalars['Int']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
   stage?: InputMaybe<Stage>;
-  where?: InputMaybe<Project_DepManyWhereInput>;
+  where?: InputMaybe<Project_BManyWhereInput>;
 };
 
 
@@ -4282,9 +4282,9 @@ export type MutationUnpublishProjectArgs = {
 };
 
 
-export type MutationUnpublishProject_DepArgs = {
+export type MutationUnpublishProject_BArgs = {
   from?: Array<Stage>;
-  where: Project_DepWhereUniqueInput;
+  where: Project_BWhereUniqueInput;
 };
 
 
@@ -4426,20 +4426,20 @@ export type MutationUpdateManyProjectsConnectionArgs = {
 };
 
 
-export type MutationUpdateManyProjects_DepArgs = {
-  data: Project_DepUpdateManyInput;
-  where?: InputMaybe<Project_DepManyWhereInput>;
+export type MutationUpdateManyProjects_BArgs = {
+  data: Project_BUpdateManyInput;
+  where?: InputMaybe<Project_BManyWhereInput>;
 };
 
 
-export type MutationUpdateManyProjects_DepConnectionArgs = {
+export type MutationUpdateManyProjects_BConnectionArgs = {
   after?: InputMaybe<Scalars['ID']['input']>;
   before?: InputMaybe<Scalars['ID']['input']>;
-  data: Project_DepUpdateManyInput;
+  data: Project_BUpdateManyInput;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
-  where?: InputMaybe<Project_DepManyWhereInput>;
+  where?: InputMaybe<Project_BManyWhereInput>;
 };
 
 
@@ -4466,9 +4466,9 @@ export type MutationUpdateProjectArgs = {
 };
 
 
-export type MutationUpdateProject_DepArgs = {
-  data: Project_DepUpdateInput;
-  where: Project_DepWhereUniqueInput;
+export type MutationUpdateProject_BArgs = {
+  data: Project_BUpdateInput;
+  where: Project_BWhereUniqueInput;
 };
 
 
@@ -4520,9 +4520,9 @@ export type MutationUpsertProjectArgs = {
 };
 
 
-export type MutationUpsertProject_DepArgs = {
-  upsert: Project_DepUpsertInput;
-  where: Project_DepWhereUniqueInput;
+export type MutationUpsertProject_BArgs = {
+  upsert: Project_BUpsertInput;
+  where: Project_BWhereUniqueInput;
 };
 
 
@@ -4646,16 +4646,16 @@ export enum ParagraphOrderByInput {
   IdDesc = 'id_DESC'
 }
 
-export type ParagraphParent = Project | Project_Dep;
+export type ParagraphParent = Project | Project_B;
 
 export type ParagraphParentConnectInput = {
   Project?: InputMaybe<ProjectConnectInput>;
-  Project_dep?: InputMaybe<Project_DepConnectInput>;
+  Project_b?: InputMaybe<Project_BConnectInput>;
 };
 
 export type ParagraphParentCreateInput = {
   Project?: InputMaybe<ProjectCreateInput>;
-  Project_dep?: InputMaybe<Project_DepCreateInput>;
+  Project_b?: InputMaybe<Project_BCreateInput>;
 };
 
 export type ParagraphParentCreateManyInlineInput = {
@@ -4674,7 +4674,7 @@ export type ParagraphParentCreateOneInlineInput = {
 
 export type ParagraphParentUpdateInput = {
   Project?: InputMaybe<ProjectUpdateInput>;
-  Project_dep?: InputMaybe<Project_DepUpdateInput>;
+  Project_b?: InputMaybe<Project_BUpdateInput>;
 };
 
 export type ParagraphParentUpdateManyInlineInput = {
@@ -4696,7 +4696,7 @@ export type ParagraphParentUpdateManyInlineInput = {
 
 export type ParagraphParentUpdateManyWithNestedWhereInput = {
   Project?: InputMaybe<ProjectUpdateManyWithNestedWhereInput>;
-  Project_dep?: InputMaybe<Project_DepUpdateManyWithNestedWhereInput>;
+  Project_b?: InputMaybe<Project_BUpdateManyWithNestedWhereInput>;
 };
 
 export type ParagraphParentUpdateOneInlineInput = {
@@ -4716,22 +4716,22 @@ export type ParagraphParentUpdateOneInlineInput = {
 
 export type ParagraphParentUpdateWithNestedWhereUniqueInput = {
   Project?: InputMaybe<ProjectUpdateWithNestedWhereUniqueInput>;
-  Project_dep?: InputMaybe<Project_DepUpdateWithNestedWhereUniqueInput>;
+  Project_b?: InputMaybe<Project_BUpdateWithNestedWhereUniqueInput>;
 };
 
 export type ParagraphParentUpsertWithNestedWhereUniqueInput = {
   Project?: InputMaybe<ProjectUpsertWithNestedWhereUniqueInput>;
-  Project_dep?: InputMaybe<Project_DepUpsertWithNestedWhereUniqueInput>;
+  Project_b?: InputMaybe<Project_BUpsertWithNestedWhereUniqueInput>;
 };
 
 export type ParagraphParentWhereInput = {
   Project?: InputMaybe<ProjectWhereInput>;
-  Project_dep?: InputMaybe<Project_DepWhereInput>;
+  Project_b?: InputMaybe<Project_BWhereInput>;
 };
 
 export type ParagraphParentWhereUniqueInput = {
   Project?: InputMaybe<ProjectWhereUniqueInput>;
-  Project_dep?: InputMaybe<Project_DepWhereUniqueInput>;
+  Project_b?: InputMaybe<Project_BWhereUniqueInput>;
 };
 
 export type ParagraphUpdateInput = {
@@ -4869,10 +4869,9 @@ export type Project = Entity & Node & {
   /** User that last published this document */
   publishedBy?: Maybe<User>;
   scheduledIn: Array<ScheduledOperation>;
-  slug: Scalars['String']['output'];
+  slug?: Maybe<Scalars['String']['output']>;
   /** System stage field */
   stage: Stage;
-  thumb: Asset;
   /** The time the document was updated */
   updatedAt: Scalars['DateTime']['output'];
   /** User that last updated this document */
@@ -4955,12 +4954,6 @@ export type ProjectScheduledInArgs = {
 };
 
 
-export type ProjectThumbArgs = {
-  forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
-  locales?: InputMaybe<Array<Locale>>;
-};
-
-
 export type ProjectUpdatedByArgs = {
   forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
   locales?: InputMaybe<Array<Locale>>;
@@ -4991,8 +4984,7 @@ export type ProjectCreateInput = {
   description?: InputMaybe<ProjectdescriptionUnionCreateManyInlineInput>;
   images?: InputMaybe<AssetCreateManyInlineInput>;
   name?: InputMaybe<Scalars['String']['input']>;
-  slug: Scalars['String']['input'];
-  thumb: AssetCreateOneInlineInput;
+  slug?: InputMaybe<Scalars['String']['input']>;
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
@@ -5168,7 +5160,6 @@ export type ProjectManyWhereInput = {
   slug_not_starts_with?: InputMaybe<Scalars['String']['input']>;
   /** All values starting with the given string. */
   slug_starts_with?: InputMaybe<Scalars['String']['input']>;
-  thumb?: InputMaybe<AssetWhereInput>;
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
   /** All values greater than the given value. */
   updatedAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -5214,7 +5205,6 @@ export type ProjectUpdateInput = {
   images?: InputMaybe<AssetUpdateManyInlineInput>;
   name?: InputMaybe<Scalars['String']['input']>;
   slug?: InputMaybe<Scalars['String']['input']>;
-  thumb?: InputMaybe<AssetUpdateOneInlineInput>;
 };
 
 export type ProjectUpdateManyInlineInput = {
@@ -5238,6 +5228,7 @@ export type ProjectUpdateManyInput = {
   client?: InputMaybe<Scalars['String']['input']>;
   date?: InputMaybe<Scalars['Date']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type ProjectUpdateManyWithNestedWhereInput = {
@@ -5438,7 +5429,6 @@ export type ProjectWhereInput = {
   slug_not_starts_with?: InputMaybe<Scalars['String']['input']>;
   /** All values starting with the given string. */
   slug_starts_with?: InputMaybe<Scalars['String']['input']>;
-  thumb?: InputMaybe<AssetWhereInput>;
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
   /** All values greater than the given value. */
   updatedAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -5474,11 +5464,10 @@ export type ProjectWhereStageInput = {
 /** References Project record uniquely */
 export type ProjectWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']['input']>;
-  slug?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type Project_Dep = Entity & Node & {
-  __typename?: 'Project_dep';
+export type Project_B = Entity & Node & {
+  __typename?: 'Project_b';
   categories: Array<Category>;
   client?: Maybe<Scalars['String']['output']>;
   /** The time the document was created */
@@ -5486,10 +5475,10 @@ export type Project_Dep = Entity & Node & {
   /** User that created this document */
   createdBy?: Maybe<User>;
   date?: Maybe<Scalars['Date']['output']>;
-  description: Array<Project_DepdescriptionUnion>;
+  description: Array<Project_BdescriptionUnion>;
   /** Get the document in other stages */
-  documentInStages: Array<Project_Dep>;
-  /** List of Project_dep versions */
+  documentInStages: Array<Project_B>;
+  /** List of Project_b versions */
   history: Array<Version>;
   /** The unique identifier */
   id: Scalars['ID']['output'];
@@ -5500,9 +5489,10 @@ export type Project_Dep = Entity & Node & {
   /** User that last published this document */
   publishedBy?: Maybe<User>;
   scheduledIn: Array<ScheduledOperation>;
-  slug?: Maybe<Scalars['String']['output']>;
+  slug: Scalars['String']['output'];
   /** System stage field */
   stage: Stage;
+  thumb: Asset;
   /** The time the document was updated */
   updatedAt: Scalars['DateTime']['output'];
   /** User that last updated this document */
@@ -5510,7 +5500,7 @@ export type Project_Dep = Entity & Node & {
 };
 
 
-export type Project_DepCategoriesArgs = {
+export type Project_BCategoriesArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
   first?: InputMaybe<Scalars['Int']['input']>;
@@ -5523,13 +5513,13 @@ export type Project_DepCategoriesArgs = {
 };
 
 
-export type Project_DepCreatedByArgs = {
+export type Project_BCreatedByArgs = {
   forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
 
-export type Project_DepDescriptionArgs = {
+export type Project_BDescriptionArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
   first?: InputMaybe<Scalars['Int']['input']>;
@@ -5540,21 +5530,21 @@ export type Project_DepDescriptionArgs = {
 };
 
 
-export type Project_DepDocumentInStagesArgs = {
+export type Project_BDocumentInStagesArgs = {
   includeCurrent?: Scalars['Boolean']['input'];
   inheritLocale?: Scalars['Boolean']['input'];
   stages?: Array<Stage>;
 };
 
 
-export type Project_DepHistoryArgs = {
+export type Project_BHistoryArgs = {
   limit?: Scalars['Int']['input'];
   skip?: Scalars['Int']['input'];
   stageOverride?: InputMaybe<Stage>;
 };
 
 
-export type Project_DepImagesArgs = {
+export type Project_BImagesArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
   first?: InputMaybe<Scalars['Int']['input']>;
@@ -5567,13 +5557,13 @@ export type Project_DepImagesArgs = {
 };
 
 
-export type Project_DepPublishedByArgs = {
+export type Project_BPublishedByArgs = {
   forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
 
-export type Project_DepScheduledInArgs = {
+export type Project_BScheduledInArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
   first?: InputMaybe<Scalars['Int']['input']>;
@@ -5585,71 +5575,78 @@ export type Project_DepScheduledInArgs = {
 };
 
 
-export type Project_DepUpdatedByArgs = {
+export type Project_BThumbArgs = {
   forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
-export type Project_DepConnectInput = {
+
+export type Project_BUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+export type Project_BConnectInput = {
   /** Allow to specify document position in list of connected documents, will default to appending at end of list */
   position?: InputMaybe<ConnectPositionInput>;
   /** Document to connect */
-  where: Project_DepWhereUniqueInput;
+  where: Project_BWhereUniqueInput;
 };
 
 /** A connection to a list of items. */
-export type Project_DepConnection = {
-  __typename?: 'Project_depConnection';
+export type Project_BConnection = {
+  __typename?: 'Project_bConnection';
   aggregate: Aggregate;
   /** A list of edges. */
-  edges: Array<Project_DepEdge>;
+  edges: Array<Project_BEdge>;
   /** Information to aid in pagination. */
   pageInfo: PageInfo;
 };
 
-export type Project_DepCreateInput = {
+export type Project_BCreateInput = {
   categories?: InputMaybe<CategoryCreateManyInlineInput>;
   client?: InputMaybe<Scalars['String']['input']>;
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   date?: InputMaybe<Scalars['Date']['input']>;
-  description?: InputMaybe<Project_DepdescriptionUnionCreateManyInlineInput>;
+  description?: InputMaybe<Project_BdescriptionUnionCreateManyInlineInput>;
   images?: InputMaybe<AssetCreateManyInlineInput>;
   name?: InputMaybe<Scalars['String']['input']>;
-  slug?: InputMaybe<Scalars['String']['input']>;
+  slug: Scalars['String']['input'];
+  thumb: AssetCreateOneInlineInput;
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
-export type Project_DepCreateManyInlineInput = {
-  /** Connect multiple existing Project_dep documents */
-  connect?: InputMaybe<Array<Project_DepWhereUniqueInput>>;
-  /** Create and connect multiple existing Project_dep documents */
-  create?: InputMaybe<Array<Project_DepCreateInput>>;
+export type Project_BCreateManyInlineInput = {
+  /** Connect multiple existing Project_b documents */
+  connect?: InputMaybe<Array<Project_BWhereUniqueInput>>;
+  /** Create and connect multiple existing Project_b documents */
+  create?: InputMaybe<Array<Project_BCreateInput>>;
 };
 
-export type Project_DepCreateOneInlineInput = {
-  /** Connect one existing Project_dep document */
-  connect?: InputMaybe<Project_DepWhereUniqueInput>;
-  /** Create and connect one Project_dep document */
-  create?: InputMaybe<Project_DepCreateInput>;
+export type Project_BCreateOneInlineInput = {
+  /** Connect one existing Project_b document */
+  connect?: InputMaybe<Project_BWhereUniqueInput>;
+  /** Create and connect one Project_b document */
+  create?: InputMaybe<Project_BCreateInput>;
 };
 
 /** An edge in a connection. */
-export type Project_DepEdge = {
-  __typename?: 'Project_depEdge';
+export type Project_BEdge = {
+  __typename?: 'Project_bEdge';
   /** A cursor for use in pagination. */
   cursor: Scalars['String']['output'];
   /** The item at the end of the edge. */
-  node: Project_Dep;
+  node: Project_B;
 };
 
 /** Identifies documents */
-export type Project_DepManyWhereInput = {
+export type Project_BManyWhereInput = {
   /** Logical AND on all given filters. */
-  AND?: InputMaybe<Array<Project_DepWhereInput>>;
+  AND?: InputMaybe<Array<Project_BWhereInput>>;
   /** Logical NOT on all given filters combined by AND. */
-  NOT?: InputMaybe<Array<Project_DepWhereInput>>;
+  NOT?: InputMaybe<Array<Project_BWhereInput>>;
   /** Logical OR on all given filters. */
-  OR?: InputMaybe<Array<Project_DepWhereInput>>;
+  OR?: InputMaybe<Array<Project_BWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']['input']>;
   categories_every?: InputMaybe<CategoryWhereInput>;
@@ -5708,10 +5705,10 @@ export type Project_DepManyWhereInput = {
   /** All values in which the union is empty. */
   description_empty?: InputMaybe<Scalars['Boolean']['input']>;
   /** Matches if the modular component contains at least one connection to the item provided to the filter */
-  description_some?: InputMaybe<Project_DepdescriptionUnionWhereInput>;
-  documentInStages_every?: InputMaybe<Project_DepWhereStageInput>;
-  documentInStages_none?: InputMaybe<Project_DepWhereStageInput>;
-  documentInStages_some?: InputMaybe<Project_DepWhereStageInput>;
+  description_some?: InputMaybe<Project_BdescriptionUnionWhereInput>;
+  documentInStages_every?: InputMaybe<Project_BWhereStageInput>;
+  documentInStages_none?: InputMaybe<Project_BWhereStageInput>;
+  documentInStages_some?: InputMaybe<Project_BWhereStageInput>;
   id?: InputMaybe<Scalars['ID']['input']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']['input']>;
@@ -5791,6 +5788,7 @@ export type Project_DepManyWhereInput = {
   slug_not_starts_with?: InputMaybe<Scalars['String']['input']>;
   /** All values starting with the given string. */
   slug_starts_with?: InputMaybe<Scalars['String']['input']>;
+  thumb?: InputMaybe<AssetWhereInput>;
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
   /** All values greater than the given value. */
   updatedAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -5809,7 +5807,7 @@ export type Project_DepManyWhereInput = {
   updatedBy?: InputMaybe<UserWhereInput>;
 };
 
-export enum Project_DepOrderByInput {
+export enum Project_BOrderByInput {
   ClientAsc = 'client_ASC',
   ClientDesc = 'client_DESC',
   CreatedAtAsc = 'createdAt_ASC',
@@ -5828,97 +5826,97 @@ export enum Project_DepOrderByInput {
   UpdatedAtDesc = 'updatedAt_DESC'
 }
 
-export type Project_DepUpdateInput = {
+export type Project_BUpdateInput = {
   categories?: InputMaybe<CategoryUpdateManyInlineInput>;
   client?: InputMaybe<Scalars['String']['input']>;
   date?: InputMaybe<Scalars['Date']['input']>;
-  description?: InputMaybe<Project_DepdescriptionUnionUpdateManyInlineInput>;
+  description?: InputMaybe<Project_BdescriptionUnionUpdateManyInlineInput>;
   images?: InputMaybe<AssetUpdateManyInlineInput>;
   name?: InputMaybe<Scalars['String']['input']>;
   slug?: InputMaybe<Scalars['String']['input']>;
+  thumb?: InputMaybe<AssetUpdateOneInlineInput>;
 };
 
-export type Project_DepUpdateManyInlineInput = {
-  /** Connect multiple existing Project_dep documents */
-  connect?: InputMaybe<Array<Project_DepConnectInput>>;
-  /** Create and connect multiple Project_dep documents */
-  create?: InputMaybe<Array<Project_DepCreateInput>>;
-  /** Delete multiple Project_dep documents */
-  delete?: InputMaybe<Array<Project_DepWhereUniqueInput>>;
-  /** Disconnect multiple Project_dep documents */
-  disconnect?: InputMaybe<Array<Project_DepWhereUniqueInput>>;
-  /** Override currently-connected documents with multiple existing Project_dep documents */
-  set?: InputMaybe<Array<Project_DepWhereUniqueInput>>;
-  /** Update multiple Project_dep documents */
-  update?: InputMaybe<Array<Project_DepUpdateWithNestedWhereUniqueInput>>;
-  /** Upsert multiple Project_dep documents */
-  upsert?: InputMaybe<Array<Project_DepUpsertWithNestedWhereUniqueInput>>;
+export type Project_BUpdateManyInlineInput = {
+  /** Connect multiple existing Project_b documents */
+  connect?: InputMaybe<Array<Project_BConnectInput>>;
+  /** Create and connect multiple Project_b documents */
+  create?: InputMaybe<Array<Project_BCreateInput>>;
+  /** Delete multiple Project_b documents */
+  delete?: InputMaybe<Array<Project_BWhereUniqueInput>>;
+  /** Disconnect multiple Project_b documents */
+  disconnect?: InputMaybe<Array<Project_BWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing Project_b documents */
+  set?: InputMaybe<Array<Project_BWhereUniqueInput>>;
+  /** Update multiple Project_b documents */
+  update?: InputMaybe<Array<Project_BUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple Project_b documents */
+  upsert?: InputMaybe<Array<Project_BUpsertWithNestedWhereUniqueInput>>;
 };
 
-export type Project_DepUpdateManyInput = {
+export type Project_BUpdateManyInput = {
   client?: InputMaybe<Scalars['String']['input']>;
   date?: InputMaybe<Scalars['Date']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
-  slug?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type Project_DepUpdateManyWithNestedWhereInput = {
+export type Project_BUpdateManyWithNestedWhereInput = {
   /** Update many input */
-  data: Project_DepUpdateManyInput;
+  data: Project_BUpdateManyInput;
   /** Document search */
-  where: Project_DepWhereInput;
+  where: Project_BWhereInput;
 };
 
-export type Project_DepUpdateOneInlineInput = {
-  /** Connect existing Project_dep document */
-  connect?: InputMaybe<Project_DepWhereUniqueInput>;
-  /** Create and connect one Project_dep document */
-  create?: InputMaybe<Project_DepCreateInput>;
-  /** Delete currently connected Project_dep document */
+export type Project_BUpdateOneInlineInput = {
+  /** Connect existing Project_b document */
+  connect?: InputMaybe<Project_BWhereUniqueInput>;
+  /** Create and connect one Project_b document */
+  create?: InputMaybe<Project_BCreateInput>;
+  /** Delete currently connected Project_b document */
   delete?: InputMaybe<Scalars['Boolean']['input']>;
-  /** Disconnect currently connected Project_dep document */
+  /** Disconnect currently connected Project_b document */
   disconnect?: InputMaybe<Scalars['Boolean']['input']>;
-  /** Update single Project_dep document */
-  update?: InputMaybe<Project_DepUpdateWithNestedWhereUniqueInput>;
-  /** Upsert single Project_dep document */
-  upsert?: InputMaybe<Project_DepUpsertWithNestedWhereUniqueInput>;
+  /** Update single Project_b document */
+  update?: InputMaybe<Project_BUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single Project_b document */
+  upsert?: InputMaybe<Project_BUpsertWithNestedWhereUniqueInput>;
 };
 
-export type Project_DepUpdateWithNestedWhereUniqueInput = {
+export type Project_BUpdateWithNestedWhereUniqueInput = {
   /** Document to update */
-  data: Project_DepUpdateInput;
+  data: Project_BUpdateInput;
   /** Unique document search */
-  where: Project_DepWhereUniqueInput;
+  where: Project_BWhereUniqueInput;
 };
 
-export type Project_DepUpsertInput = {
+export type Project_BUpsertInput = {
   /** Create document if it didn't exist */
-  create: Project_DepCreateInput;
+  create: Project_BCreateInput;
   /** Update document if it exists */
-  update: Project_DepUpdateInput;
+  update: Project_BUpdateInput;
 };
 
-export type Project_DepUpsertWithNestedWhereUniqueInput = {
+export type Project_BUpsertWithNestedWhereUniqueInput = {
   /** Upsert data */
-  data: Project_DepUpsertInput;
+  data: Project_BUpsertInput;
   /** Unique document search */
-  where: Project_DepWhereUniqueInput;
+  where: Project_BWhereUniqueInput;
 };
 
 /** This contains a set of filters that can be used to compare values internally */
-export type Project_DepWhereComparatorInput = {
+export type Project_BWhereComparatorInput = {
   /** This field can be used to request to check if the entry is outdated by internal comparison */
   outdated_to?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 /** Identifies documents */
-export type Project_DepWhereInput = {
+export type Project_BWhereInput = {
   /** Logical AND on all given filters. */
-  AND?: InputMaybe<Array<Project_DepWhereInput>>;
+  AND?: InputMaybe<Array<Project_BWhereInput>>;
   /** Logical NOT on all given filters combined by AND. */
-  NOT?: InputMaybe<Array<Project_DepWhereInput>>;
+  NOT?: InputMaybe<Array<Project_BWhereInput>>;
   /** Logical OR on all given filters. */
-  OR?: InputMaybe<Array<Project_DepWhereInput>>;
+  OR?: InputMaybe<Array<Project_BWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']['input']>;
   categories_every?: InputMaybe<CategoryWhereInput>;
@@ -5977,10 +5975,10 @@ export type Project_DepWhereInput = {
   /** All values in which the union is empty. */
   description_empty?: InputMaybe<Scalars['Boolean']['input']>;
   /** Matches if the modular component contains at least one connection to the item provided to the filter */
-  description_some?: InputMaybe<Project_DepdescriptionUnionWhereInput>;
-  documentInStages_every?: InputMaybe<Project_DepWhereStageInput>;
-  documentInStages_none?: InputMaybe<Project_DepWhereStageInput>;
-  documentInStages_some?: InputMaybe<Project_DepWhereStageInput>;
+  description_some?: InputMaybe<Project_BdescriptionUnionWhereInput>;
+  documentInStages_every?: InputMaybe<Project_BWhereStageInput>;
+  documentInStages_none?: InputMaybe<Project_BWhereStageInput>;
+  documentInStages_some?: InputMaybe<Project_BWhereStageInput>;
   id?: InputMaybe<Scalars['ID']['input']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']['input']>;
@@ -6060,6 +6058,7 @@ export type Project_DepWhereInput = {
   slug_not_starts_with?: InputMaybe<Scalars['String']['input']>;
   /** All values starting with the given string. */
   slug_starts_with?: InputMaybe<Scalars['String']['input']>;
+  thumb?: InputMaybe<AssetWhereInput>;
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
   /** All values greater than the given value. */
   updatedAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -6079,111 +6078,121 @@ export type Project_DepWhereInput = {
 };
 
 /** The document in stages filter allows specifying a stage entry to cross compare the same document between different stages */
-export type Project_DepWhereStageInput = {
+export type Project_BWhereStageInput = {
   /** Logical AND on all given filters. */
-  AND?: InputMaybe<Array<Project_DepWhereStageInput>>;
+  AND?: InputMaybe<Array<Project_BWhereStageInput>>;
   /** Logical NOT on all given filters combined by AND. */
-  NOT?: InputMaybe<Array<Project_DepWhereStageInput>>;
+  NOT?: InputMaybe<Array<Project_BWhereStageInput>>;
   /** Logical OR on all given filters. */
-  OR?: InputMaybe<Array<Project_DepWhereStageInput>>;
+  OR?: InputMaybe<Array<Project_BWhereStageInput>>;
   /** This field contains fields which can be set as true or false to specify an internal comparison */
-  compareWithParent?: InputMaybe<Project_DepWhereComparatorInput>;
+  compareWithParent?: InputMaybe<Project_BWhereComparatorInput>;
   /** Specify the stage to compare with */
   stage?: InputMaybe<Stage>;
 };
 
-/** References Project_dep record uniquely */
-export type Project_DepWhereUniqueInput = {
+/** References Project_b record uniquely */
+export type Project_BWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type Project_DepdescriptionUnion = Paragraph;
+export type Project_BdescriptionUnion = Link | Paragraph;
 
-export type Project_DepdescriptionUnionConnectInput = {
-  Paragraph?: InputMaybe<ParagraphConnectInput>;
-};
-
-export type Project_DepdescriptionUnionCreateInput = {
-  Paragraph?: InputMaybe<ParagraphCreateInput>;
-};
-
-export type Project_DepdescriptionUnionCreateManyInlineInput = {
-  /** Create and connect multiple existing Project_depdescriptionUnion documents */
-  create?: InputMaybe<Array<Project_DepdescriptionUnionCreateInput>>;
-};
-
-export type Project_DepdescriptionUnionCreateOneInlineInput = {
-  /** Create and connect one Project_depdescriptionUnion document */
-  create?: InputMaybe<Project_DepdescriptionUnionCreateInput>;
-};
-
-export type Project_DepdescriptionUnionCreateWithPositionInput = {
-  Paragraph?: InputMaybe<ParagraphCreateWithPositionInput>;
-};
-
-export type Project_DepdescriptionUnionUpdateInput = {
-  Paragraph?: InputMaybe<ParagraphUpdateInput>;
-};
-
-export type Project_DepdescriptionUnionUpdateManyInlineInput = {
-  /** Create and connect multiple Project_depdescriptionUnion component instances */
-  create?: InputMaybe<Array<Project_DepdescriptionUnionCreateWithPositionInput>>;
-  /** Delete multiple Project_depdescriptionUnion documents */
-  delete?: InputMaybe<Array<Project_DepdescriptionUnionWhereUniqueInput>>;
-  /** Update multiple Project_depdescriptionUnion component instances */
-  update?: InputMaybe<Array<Project_DepdescriptionUnionUpdateWithNestedWhereUniqueAndPositionInput>>;
-  /** Upsert multiple Project_depdescriptionUnion component instances */
-  upsert?: InputMaybe<Array<Project_DepdescriptionUnionUpsertWithNestedWhereUniqueAndPositionInput>>;
-};
-
-export type Project_DepdescriptionUnionUpdateManyWithNestedWhereInput = {
-  Paragraph?: InputMaybe<ParagraphUpdateManyWithNestedWhereInput>;
-};
-
-export type Project_DepdescriptionUnionUpdateOneInlineInput = {
-  /** Create and connect one Project_depdescriptionUnion document */
-  create?: InputMaybe<Project_DepdescriptionUnionCreateInput>;
-  /** Delete currently connected Project_depdescriptionUnion document */
-  delete?: InputMaybe<Scalars['Boolean']['input']>;
-  /** Update single Project_depdescriptionUnion document */
-  update?: InputMaybe<Project_DepdescriptionUnionUpdateWithNestedWhereUniqueInput>;
-  /** Upsert single Project_depdescriptionUnion document */
-  upsert?: InputMaybe<Project_DepdescriptionUnionUpsertWithNestedWhereUniqueInput>;
-};
-
-export type Project_DepdescriptionUnionUpdateWithNestedWhereUniqueAndPositionInput = {
-  Paragraph?: InputMaybe<ParagraphUpdateWithNestedWhereUniqueAndPositionInput>;
-};
-
-export type Project_DepdescriptionUnionUpdateWithNestedWhereUniqueInput = {
-  Paragraph?: InputMaybe<ParagraphUpdateWithNestedWhereUniqueInput>;
-};
-
-export type Project_DepdescriptionUnionUpsertWithNestedWhereUniqueAndPositionInput = {
-  Paragraph?: InputMaybe<ParagraphUpsertWithNestedWhereUniqueAndPositionInput>;
-};
-
-export type Project_DepdescriptionUnionUpsertWithNestedWhereUniqueInput = {
-  Paragraph?: InputMaybe<ParagraphUpsertWithNestedWhereUniqueInput>;
-};
-
-export type Project_DepdescriptionUnionWhereInput = {
-  Paragraph?: InputMaybe<ParagraphWhereInput>;
-};
-
-export type Project_DepdescriptionUnionWhereUniqueInput = {
-  Paragraph?: InputMaybe<ParagraphWhereUniqueInput>;
-};
-
-export type ProjectdescriptionUnion = Link | Paragraph;
-
-export type ProjectdescriptionUnionConnectInput = {
+export type Project_BdescriptionUnionConnectInput = {
   Link?: InputMaybe<LinkConnectInput>;
   Paragraph?: InputMaybe<ParagraphConnectInput>;
 };
 
-export type ProjectdescriptionUnionCreateInput = {
+export type Project_BdescriptionUnionCreateInput = {
   Link?: InputMaybe<LinkCreateInput>;
+  Paragraph?: InputMaybe<ParagraphCreateInput>;
+};
+
+export type Project_BdescriptionUnionCreateManyInlineInput = {
+  /** Create and connect multiple existing Project_bdescriptionUnion documents */
+  create?: InputMaybe<Array<Project_BdescriptionUnionCreateInput>>;
+};
+
+export type Project_BdescriptionUnionCreateOneInlineInput = {
+  /** Create and connect one Project_bdescriptionUnion document */
+  create?: InputMaybe<Project_BdescriptionUnionCreateInput>;
+};
+
+export type Project_BdescriptionUnionCreateWithPositionInput = {
+  Link?: InputMaybe<LinkCreateWithPositionInput>;
+  Paragraph?: InputMaybe<ParagraphCreateWithPositionInput>;
+};
+
+export type Project_BdescriptionUnionUpdateInput = {
+  Link?: InputMaybe<LinkUpdateInput>;
+  Paragraph?: InputMaybe<ParagraphUpdateInput>;
+};
+
+export type Project_BdescriptionUnionUpdateManyInlineInput = {
+  /** Create and connect multiple Project_bdescriptionUnion component instances */
+  create?: InputMaybe<Array<Project_BdescriptionUnionCreateWithPositionInput>>;
+  /** Delete multiple Project_bdescriptionUnion documents */
+  delete?: InputMaybe<Array<Project_BdescriptionUnionWhereUniqueInput>>;
+  /** Update multiple Project_bdescriptionUnion component instances */
+  update?: InputMaybe<Array<Project_BdescriptionUnionUpdateWithNestedWhereUniqueAndPositionInput>>;
+  /** Upsert multiple Project_bdescriptionUnion component instances */
+  upsert?: InputMaybe<Array<Project_BdescriptionUnionUpsertWithNestedWhereUniqueAndPositionInput>>;
+};
+
+export type Project_BdescriptionUnionUpdateManyWithNestedWhereInput = {
+  Link?: InputMaybe<LinkUpdateManyWithNestedWhereInput>;
+  Paragraph?: InputMaybe<ParagraphUpdateManyWithNestedWhereInput>;
+};
+
+export type Project_BdescriptionUnionUpdateOneInlineInput = {
+  /** Create and connect one Project_bdescriptionUnion document */
+  create?: InputMaybe<Project_BdescriptionUnionCreateInput>;
+  /** Delete currently connected Project_bdescriptionUnion document */
+  delete?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Update single Project_bdescriptionUnion document */
+  update?: InputMaybe<Project_BdescriptionUnionUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single Project_bdescriptionUnion document */
+  upsert?: InputMaybe<Project_BdescriptionUnionUpsertWithNestedWhereUniqueInput>;
+};
+
+export type Project_BdescriptionUnionUpdateWithNestedWhereUniqueAndPositionInput = {
+  Link?: InputMaybe<LinkUpdateWithNestedWhereUniqueAndPositionInput>;
+  Paragraph?: InputMaybe<ParagraphUpdateWithNestedWhereUniqueAndPositionInput>;
+};
+
+export type Project_BdescriptionUnionUpdateWithNestedWhereUniqueInput = {
+  Link?: InputMaybe<LinkUpdateWithNestedWhereUniqueInput>;
+  Paragraph?: InputMaybe<ParagraphUpdateWithNestedWhereUniqueInput>;
+};
+
+export type Project_BdescriptionUnionUpsertWithNestedWhereUniqueAndPositionInput = {
+  Link?: InputMaybe<LinkUpsertWithNestedWhereUniqueAndPositionInput>;
+  Paragraph?: InputMaybe<ParagraphUpsertWithNestedWhereUniqueAndPositionInput>;
+};
+
+export type Project_BdescriptionUnionUpsertWithNestedWhereUniqueInput = {
+  Link?: InputMaybe<LinkUpsertWithNestedWhereUniqueInput>;
+  Paragraph?: InputMaybe<ParagraphUpsertWithNestedWhereUniqueInput>;
+};
+
+export type Project_BdescriptionUnionWhereInput = {
+  Link?: InputMaybe<LinkWhereInput>;
+  Paragraph?: InputMaybe<ParagraphWhereInput>;
+};
+
+export type Project_BdescriptionUnionWhereUniqueInput = {
+  Link?: InputMaybe<LinkWhereUniqueInput>;
+  Paragraph?: InputMaybe<ParagraphWhereUniqueInput>;
+};
+
+export type ProjectdescriptionUnion = Paragraph;
+
+export type ProjectdescriptionUnionConnectInput = {
+  Paragraph?: InputMaybe<ParagraphConnectInput>;
+};
+
+export type ProjectdescriptionUnionCreateInput = {
   Paragraph?: InputMaybe<ParagraphCreateInput>;
 };
 
@@ -6198,12 +6207,10 @@ export type ProjectdescriptionUnionCreateOneInlineInput = {
 };
 
 export type ProjectdescriptionUnionCreateWithPositionInput = {
-  Link?: InputMaybe<LinkCreateWithPositionInput>;
   Paragraph?: InputMaybe<ParagraphCreateWithPositionInput>;
 };
 
 export type ProjectdescriptionUnionUpdateInput = {
-  Link?: InputMaybe<LinkUpdateInput>;
   Paragraph?: InputMaybe<ParagraphUpdateInput>;
 };
 
@@ -6219,7 +6226,6 @@ export type ProjectdescriptionUnionUpdateManyInlineInput = {
 };
 
 export type ProjectdescriptionUnionUpdateManyWithNestedWhereInput = {
-  Link?: InputMaybe<LinkUpdateManyWithNestedWhereInput>;
   Paragraph?: InputMaybe<ParagraphUpdateManyWithNestedWhereInput>;
 };
 
@@ -6235,32 +6241,26 @@ export type ProjectdescriptionUnionUpdateOneInlineInput = {
 };
 
 export type ProjectdescriptionUnionUpdateWithNestedWhereUniqueAndPositionInput = {
-  Link?: InputMaybe<LinkUpdateWithNestedWhereUniqueAndPositionInput>;
   Paragraph?: InputMaybe<ParagraphUpdateWithNestedWhereUniqueAndPositionInput>;
 };
 
 export type ProjectdescriptionUnionUpdateWithNestedWhereUniqueInput = {
-  Link?: InputMaybe<LinkUpdateWithNestedWhereUniqueInput>;
   Paragraph?: InputMaybe<ParagraphUpdateWithNestedWhereUniqueInput>;
 };
 
 export type ProjectdescriptionUnionUpsertWithNestedWhereUniqueAndPositionInput = {
-  Link?: InputMaybe<LinkUpsertWithNestedWhereUniqueAndPositionInput>;
   Paragraph?: InputMaybe<ParagraphUpsertWithNestedWhereUniqueAndPositionInput>;
 };
 
 export type ProjectdescriptionUnionUpsertWithNestedWhereUniqueInput = {
-  Link?: InputMaybe<LinkUpsertWithNestedWhereUniqueInput>;
   Paragraph?: InputMaybe<ParagraphUpsertWithNestedWhereUniqueInput>;
 };
 
 export type ProjectdescriptionUnionWhereInput = {
-  Link?: InputMaybe<LinkWhereInput>;
   Paragraph?: InputMaybe<ParagraphWhereInput>;
 };
 
 export type ProjectdescriptionUnionWhereUniqueInput = {
-  Link?: InputMaybe<LinkWhereUniqueInput>;
   Paragraph?: InputMaybe<ParagraphWhereUniqueInput>;
 };
 
@@ -6321,18 +6321,18 @@ export type Query = {
   project?: Maybe<Project>;
   /** Retrieve document version */
   projectVersion?: Maybe<DocumentVersion>;
-  /** Retrieve a single project_dep */
-  project_dep?: Maybe<Project_Dep>;
+  /** Retrieve a single project_b */
+  project_b?: Maybe<Project_B>;
   /** Retrieve document version */
-  project_depVersion?: Maybe<DocumentVersion>;
+  project_bVersion?: Maybe<DocumentVersion>;
   /** Retrieve multiple projects */
   projects: Array<Project>;
   /** Retrieve multiple projects using the Relay connection interface */
   projectsConnection: ProjectConnection;
-  /** Retrieve multiple projects_dep */
-  projects_dep: Array<Project_Dep>;
-  /** Retrieve multiple projects_dep using the Relay connection interface */
-  projects_depConnection: Project_DepConnection;
+  /** Retrieve multiple projects_b */
+  projects_b: Array<Project_B>;
+  /** Retrieve multiple projects_b using the Relay connection interface */
+  projects_bConnection: Project_BConnection;
   /** Retrieve a single reference */
   reference?: Maybe<Reference>;
   /** Retrieve document version */
@@ -6577,14 +6577,14 @@ export type QueryProjectVersionArgs = {
 };
 
 
-export type QueryProject_DepArgs = {
+export type QueryProject_BArgs = {
   locales?: Array<Locale>;
   stage?: Stage;
-  where: Project_DepWhereUniqueInput;
+  where: Project_BWhereUniqueInput;
 };
 
 
-export type QueryProject_DepVersionArgs = {
+export type QueryProject_BVersionArgs = {
   where: VersionWhereInput;
 };
 
@@ -6615,29 +6615,29 @@ export type QueryProjectsConnectionArgs = {
 };
 
 
-export type QueryProjects_DepArgs = {
+export type QueryProjects_BArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   locales?: Array<Locale>;
-  orderBy?: InputMaybe<Project_DepOrderByInput>;
+  orderBy?: InputMaybe<Project_BOrderByInput>;
   skip?: InputMaybe<Scalars['Int']['input']>;
   stage?: Stage;
-  where?: InputMaybe<Project_DepWhereInput>;
+  where?: InputMaybe<Project_BWhereInput>;
 };
 
 
-export type QueryProjects_DepConnectionArgs = {
+export type QueryProjects_BConnectionArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   locales?: Array<Locale>;
-  orderBy?: InputMaybe<Project_DepOrderByInput>;
+  orderBy?: InputMaybe<Project_BOrderByInput>;
   skip?: InputMaybe<Scalars['Int']['input']>;
   stage?: Stage;
-  where?: InputMaybe<Project_DepWhereInput>;
+  where?: InputMaybe<Project_BWhereInput>;
 };
 
 
@@ -7279,7 +7279,7 @@ export type ScheduledOperationUpdatedByArgs = {
   locales?: InputMaybe<Array<Locale>>;
 };
 
-export type ScheduledOperationAffectedDocument = About | AboutStatus | Asset | Category | Link_Dep | Project | Project_Dep | Reference;
+export type ScheduledOperationAffectedDocument = About | AboutStatus | Asset | Category | Link_Dep | Project | Project_B | Reference;
 
 export type ScheduledOperationConnectInput = {
   /** Allow to specify document position in list of connected documents, will default to appending at end of list */
@@ -8727,15 +8727,15 @@ export enum _SystemDateTimeFieldVariation {
 export type ProjectsListQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ProjectsListQueryQuery = { __typename?: 'Query', projects: Array<{ __typename?: 'Project', slug: string, id: string, name?: string | null, date?: any | null, thumb: { __typename?: 'Asset', id: string, fileName: string, url: string }, categories: Array<{ __typename?: 'Category', slug?: string | null, label?: string | null, projects: Array<{ __typename?: 'Project_dep', slug?: string | null }> }> }> };
+export type ProjectsListQueryQuery = { __typename?: 'Query', projects_b: Array<{ __typename?: 'Project_b', slug: string, id: string, name?: string | null, date?: any | null, thumb: { __typename?: 'Asset', id: string, fileName: string, url: string }, categories: Array<{ __typename?: 'Category', slug?: string | null, label?: string | null, projects: Array<{ __typename?: 'Project', slug?: string | null }> }> }> };
 
 export type ProjectQueryQueryVariables = Exact<{
   slug: Scalars['String']['input'];
 }>;
 
 
-export type ProjectQueryQuery = { __typename?: 'Query', project?: { __typename?: 'Project', slug: string, id: string, name?: string | null, date?: any | null, client?: string | null, description: Array<{ __typename?: 'Link', id: string, label: string, url: string } | { __typename?: 'Paragraph', id: string, content?: { __typename?: 'RichText', html: string, text: string } | null }>, images: Array<{ __typename?: 'Asset', url: string, size?: number | null, id: string, height?: number | null, fileName: string }> } | null };
+export type ProjectQueryQuery = { __typename?: 'Query', project_b?: { __typename?: 'Project_b', slug: string, id: string, name?: string | null, date?: any | null, client?: string | null, description: Array<{ __typename?: 'Link', id: string, label: string, url: string } | { __typename?: 'Paragraph', id: string, content?: { __typename?: 'RichText', html: string, text: string } | null }>, images: Array<{ __typename?: 'Asset', url: string, size?: number | null, id: string, height?: number | null, fileName: string }> } | null };
 
 
-export const ProjectsListQueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ProjectsListQuery"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"projects"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"thumb"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"fileName"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}},{"kind":"Field","name":{"kind":"Name","value":"categories"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"projects"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"slug"}}]}}]}}]}}]}}]} as unknown as DocumentNode<ProjectsListQueryQuery, ProjectsListQueryQueryVariables>;
-export const ProjectQueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ProjectQuery"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"project"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"slug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"description"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Paragraph"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"html"}},{"kind":"Field","name":{"kind":"Name","value":"text"}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Link"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"client"}},{"kind":"Field","name":{"kind":"Name","value":"images"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"size"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"fileName"}}]}}]}}]}}]} as unknown as DocumentNode<ProjectQueryQuery, ProjectQueryQueryVariables>;
+export const ProjectsListQueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ProjectsListQuery"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"projects_b"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"thumb"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"fileName"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}},{"kind":"Field","name":{"kind":"Name","value":"categories"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"projects"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"slug"}}]}}]}}]}}]}}]} as unknown as DocumentNode<ProjectsListQueryQuery, ProjectsListQueryQueryVariables>;
+export const ProjectQueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ProjectQuery"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"project_b"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"slug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"description"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Paragraph"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"html"}},{"kind":"Field","name":{"kind":"Name","value":"text"}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Link"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"client"}},{"kind":"Field","name":{"kind":"Name","value":"images"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"size"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"fileName"}}]}}]}}]}}]} as unknown as DocumentNode<ProjectQueryQuery, ProjectQueryQueryVariables>;

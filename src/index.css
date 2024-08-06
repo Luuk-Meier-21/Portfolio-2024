@@ -4,17 +4,18 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --header-height: 120px;
-}
 
 html, body {
   /* scrollbar-gutter: stable both-edges; */
 
-  @apply text-base font-serif bg-brand-gray tracking-[-.1px] text-white antialiased;
+  @apply text-md font-serif bg-brand-gray text-white antialiased;
 } 
 
-body::-webkit-scrollbar {
+:root {
+  
+}
+
+/* body::-webkit-scrollbar {
   width: 0px;
 }
  
@@ -24,4 +25,4 @@ body::-webkit-scrollbar-track {
  
 body::-webkit-scrollbar-thumb {
   background-color: #3F3C3B;
-}
+} */

@@ -2,14 +2,15 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    fontSize: {
+      md: ["22px", { lineHeight: "1.2", letterSpacing: "-0.011em" }],
+      lg: ["32px", { lineHeight: "1", letterSpacing: "-0.0145em" }],
+      xl: ["56px", { lineHeight: "1", letterSpacing: "-0.0145em" }],
+    },
     extend: {
       fontFamily: {
         serif: "serif",
         sans: "sans-serif",
-      },
-      fontSize: {
-        base: ["14px", "16.8px"],
-        logo: ["37.5px", "34px"],
       },
       spacing: {
         "rem-1/4": ".25rem",

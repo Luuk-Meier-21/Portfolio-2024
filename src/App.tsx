@@ -9,7 +9,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { Layout } from "./layouts/Layout/Layout";
 import { ErrorBoundary } from "react-error-boundary";
 import { ErrorInfo } from "react";
-import { ProjectDetail } from "./components/ProjectDetail/ProjectDetail";
+import { ProjectOverview } from "./components/ProjectsOverview/ProjectsOverview";
 
 // function ProjectDetailLoader() {
 //   const { slug } = useParams();
@@ -36,7 +36,13 @@ const router = createBrowserRouter([
     ),
     children: [
       {
-        path: "/:slug",
+        path: "/",
+        element: <ProjectOverview />,
+        children: [
+          {
+            path: "/:slug",
+          },
+        ],
       },
     ],
   },

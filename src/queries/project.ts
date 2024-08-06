@@ -2,7 +2,7 @@ import { graphql } from "../gql";
 
 export const ProjectsListQuery = graphql(`
   query ProjectsListQuery {
-    projects {
+    projects_b {
       slug
       id
       name
@@ -25,7 +25,7 @@ export const ProjectsListQuery = graphql(`
 
 export const ProjectQuery = graphql(`
   query ProjectQuery($slug: String!) {
-    project(where: { slug: $slug }) {
+    project_b(where: { slug: $slug }) {
       slug
       id
       name
