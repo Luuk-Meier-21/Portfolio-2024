@@ -12,6 +12,13 @@ export const ProjectsListQuery = graphql(`
         fileName
         url
       }
+      images {
+        url
+        id
+        height
+        width
+        fileName
+      }
       categories {
         slug
         label
@@ -47,10 +54,25 @@ export const ProjectQuery = graphql(`
       client
       images {
         url
-        size
         id
         height
+        width
         fileName
+      }
+      categories {
+        slug
+        id
+        label
+      }
+      info {
+        ... on InfoItem {
+          id
+          link {
+            url
+            label
+          }
+          label
+        }
       }
     }
   }

@@ -5,7 +5,7 @@ export default {
     fontSize: {
       md: ["22px", { lineHeight: "1.2", letterSpacing: "-0.011em" }],
       lg: ["32px", { lineHeight: "1", letterSpacing: "-0.0145em" }],
-      xl: ["56px", { lineHeight: "1", letterSpacing: "-0.0145em" }],
+      xl: ["46px", { lineHeight: "1", letterSpacing: "-0.0145em" }],
     },
     extend: {
       fontFamily: {
@@ -21,7 +21,8 @@ export default {
         "rem-4": "4rem",
       },
       colors: {
-        "brand-gray": "#23201F",
+        "brand-primary": "#231D19",
+        "brand-beige": "#FBF6F4",
       },
     },
   },

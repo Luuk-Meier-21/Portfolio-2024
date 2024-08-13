@@ -1,13 +1,17 @@
 import { useQuery } from "urql";
 import { ProjectQuery } from "../../queries/project";
 import { ProjectQueryQuery } from "../../gql/graphql";
-import { isNullableValue } from "../../utils/gql";
-import { AnimatePresence, motion, MotionStyle } from "framer-motion";
-import { useParams } from "react-router";
+import { MotionStyle } from "framer-motion";
 import clsx from "clsx";
+import InlineCollapse from "../InlineCollapse/InlineCollapse";
+import InlineList from "../InlineList/InlineList";
+import DynamicImage from "../DynamicImage/DynamicImage";
+import { useParams } from "react-router";
+import { useEffect, useState } from "react";
+import Collapse from "../Collapse/Collapse";
 
 export type ProjectDetailData = Exclude<
-  ProjectQueryQuery["project"],
+  ProjectQueryQuery["project_b"],
   null | undefined
 >;
 export type ProjectDescriptionBlock = ProjectDetailData["description"][0];
@@ -19,6 +23,8 @@ interface ProjectDetailProps {
 }
 
 export function ProjectDetail({ slug, className }: ProjectDetailProps) {
+  const { slug: currentSlug } = useParams();
+
   const [result] = useQuery({
     query: ProjectQuery,
     variables: {
@@ -28,42 +34,128 @@ export function ProjectDetail({ slug, className }: ProjectDetailProps) {
 
   const { data, fetching, error } = result;
 
-  if (fetching) return <p>Loading...</p>;
+  const project = data?.project_b;
+  const open = currentSlug === project?.slug ?? false;
+
+  const [expandedDescription, setExpandedDescription] = useState(false);
+
+  useEffect(() => {
+    setExpandedDescription(false);
+  }, [open]);
+
+  useEffect(() => {
+    if (open && project?.name) {
+      document.title = `Luuk Meier - ${project.name}`;
+    } else {
+      document.title = `Luuk Meier - Portfolio`;
+    }
+  }, [project, open]);
+
+  // if (fetching) return <p>Loading...</p>;
   if (error) return <p>Oh no... {error.message}</p>;
 
-  if (isNullableValue(data?.project)) {
-    throw Error("No project data");
-  }
-
-  const project: ProjectDetailData = data!.project!;
-  const classes = clsx(
-    "flex w-full flex-col pointer-events-auto gap-y-rem-1 h-[2000px] bg-red-400",
-    className,
-  );
+  // const classes = clsx("", className);
 
   const renderDescription = (
     block: ProjectDescriptionBlock,
   ): JSX.Element | undefined => {
+    console.log(block);
     switch (block.__typename) {
       case "Link":
         return <a href={block.url}>{block.label}</a>;
       case "Paragraph":
-        return <p>{block.content?.text}</p>;
+        return <p className="text-md mb-[1em]">{block.content?.text}</p>;
     }
   };
 
+  const renderTableItem = (label: string, content: JSX.Element) => (
+    <li className="col-start-1 -col-end-1 grid grid-cols-subgrid">
+      <div className="col-span-1 m-0 flex">{label}:</div>
+      <div className="mb col-start-2 -col-end-1 flex">{content}</div>
+    </li>
+  );
+
+  const isOpen = (project && open) ?? false;
+
+  const year = project?.date
+    ? new Date(project?.date).getFullYear()
+    : undefined;
+
   return (
-    <article className={classes}>
-      <figure className="flex flex-col gap-y-rem-1">
-        {project.images.map((image) => (
-          <img
-            className="aspect-[4/3] w-full bg-white/5 object-cover"
-            src={image.url}
-            alt={image.fileName}
-          />
-        ))}
-      </figure>
-      <article>{project.description.map(renderDescription)}</article>
-    </article>
+    project && (
+      <InlineCollapse open={isOpen} className="pointer-events-none mt-[1em]">
+        <article className="pointer-events-auto mb-[2em] mt-[1em] w-full">
+          <figure className="grid grid-cols-1 gap-x-rem-1/2 gap-y-[1em] md:grid-cols-2">
+            {project.images.map((image) => (
+              <DynamicImage
+                src={image.url}
+                alt={image.fileName}
+                width={image.width ?? 0}
+                height={image.height ?? 0}
+              />
+            ))}
+          </figure>
+          <div className="mt-rem-1/2 grid min-h-[25vh] auto-rows-min grid-cols-2 gap-rem-1/2 md:grid-cols-6">
+            <ul className="text-md col-span-2 mb-[1em] grid auto-rows-min grid-cols-subgrid gap-y-rem-1/4 md:col-span-3 md:mb-0">
+              {project.categories.length > 0 &&
+                renderTableItem(
+                  "Disciplines",
+                  <InlineList>
+                    {project.categories.map((category) => (
+                      <li className="mb-0">{category.label}</li>
+                    ))}
+                  </InlineList>,
+                )}
+              {year &&
+                renderTableItem(
+                  "Jaar",
+                  <time dateTime={project.date}>{year}</time>,
+                )}
+              {project.info.map(
+                (info) =>
+                  info.label &&
+                  info.link &&
+                  renderTableItem(
+                    info.label,
+                    <a
+                      className="italic underline decoration-from-font underline-offset-[.15em] hover:no-underline"
+                      target="_blank"
+                      href={info.link.url}
+                    >
+                      {info.link.label}
+                    </a>,
+                  ),
+              )}
+            </ul>
+            {project?.description[0] && (
+              <div className="col-span-2 flex flex-col items-start md:col-span-3">
+                {project.description.length > 0 &&
+                  renderDescription(project.description[0])}
+
+                {project.description.slice(1).length > 0 && (
+                  <Collapse
+                    className="flex flex-col overflow-hidden"
+                    open={expandedDescription}
+                  >
+                    {project.description.slice(1).map(renderDescription)}
+                  </Collapse>
+                )}
+                {project.description.slice(1).length > 0 && (
+                  <button
+                    className="text-md hover:no-underline"
+                    onClick={() => setExpandedDescription(!expandedDescription)}
+                  >
+                    <span className="mr-rem-1/2 italic underline decoration-from-font underline-offset-[.15em] hover:no-underline">
+                      {expandedDescription ? "Lees minder" : "Lees meer"}
+                    </span>
+                    {expandedDescription ? <>&#8210;</> : <>+</>}
+                  </button>
+                )}
+              </div>
+            )}
+          </div>
+        </article>
+      </InlineCollapse>
+    )
   );
 }

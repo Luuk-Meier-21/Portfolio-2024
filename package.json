@@ -12,6 +12,9 @@
     "gen": "npx generate-react-cli component"
   },
   "dependencies": {
+    "@radix-ui/react-collapsible": "^1.1.0",
+    "@react-hook/size": "^2.1.2",
+    "@uidotdev/usehooks": "^2.4.1",
     "clsx": "^2.1.1",
     "framer-motion": "^11.3.9",
     "react": "^18.3.1",

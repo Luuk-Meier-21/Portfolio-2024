@@ -9,10 +9,10 @@ interface ProjectIndexProps {
 export function Layout({ children }: ProjectIndexProps) {
   return (
     <div className="flex min-h-[100dvh]">
-      <div className="grid flex-1 grid-rows-[repeat(4,minmax(calc(25vh-(1rem/4)),auto))] gap-x-[1ch] p-rem-1/2">
+      <div className="flex flex-1 flex-col gap-x-[1ch] gap-y-[1em] px-rem-1/2 py-[.3rem] text-lg text-xl lg:text-xl">
         <Header className="" />
         {children}
-        <Footer className="-row-end-1" />
+        <Footer className="mt-auto" />
       </div>
     </div>
   );
