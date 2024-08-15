@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { referenceQuery } from "../../queries/reference";
 import { useQuery } from "urql";
 import { AnimatePresence, motion } from "framer-motion";
-import { FADE_TRANSITION, FADE_TRANSITION_DELAY } from "../../utils/animation";
+import { FADE_TRANSITION_DELAY } from "../../utils/animation";
 
 interface FooterProps {
   className?: string;
@@ -16,7 +16,7 @@ function Footer({ className }: FooterProps) {
     },
   });
 
-  const { data, fetching, error } = result;
+  const { data } = result;
 
   const reference = data?.reference;
 

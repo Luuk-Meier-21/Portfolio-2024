@@ -1,6 +1,5 @@
 import clsx from "clsx";
 import { PropsWithoutRef } from "react";
-import { Link } from "react-router-dom";
 
 interface LogoProps {
   className?: string;

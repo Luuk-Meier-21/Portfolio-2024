@@ -2,13 +2,7 @@ import { useQuery } from "urql";
 import { ProjectThumb } from "../ProjectThumb/ProjectThumb";
 import { AnimatePresence, motion, MotionStyle } from "framer-motion";
 import { ProjectDetail } from "../ProjectDetail/ProjectDetail";
-import { useParams } from "react-router";
-import { useEffect, useState } from "react";
-import {
-  FADE_TRANSITION,
-  FADE_TRANSITION_DELAY,
-  fadeTransition,
-} from "../../utils/animation";
+import { FADE_TRANSITION_DELAY } from "../../utils/animation";
 import { projectsListQuery } from "../../queries/project";
 
 export interface ProjectMotionStyle {
@@ -19,14 +13,11 @@ export interface ProjectMotionStyle {
 interface ProjectOverviewProps {}
 
 export function ProjectOverview({}: ProjectOverviewProps) {
-  const { slug } = useParams();
   const [result] = useQuery({
     query: projectsListQuery,
   });
 
-  const [openIndex, setOpenIndex] = useState(-1);
-
-  const { data, fetching, error } = result;
+  const { data, error } = result;
 
   const projects = data?.projects_b?.sort((a, b) => {
     const ad = new Date(a.date);
@@ -35,15 +26,6 @@ export function ProjectOverview({}: ProjectOverviewProps) {
     return bd.getTime() - ad.getTime();
   });
 
-  useEffect(() => {
-    if (slug !== undefined) {
-      setOpenIndex(
-        projects?.findIndex((project) => project.slug === slug) ?? -1,
-      );
-    }
-  }, [slug, projects]);
-
-  // if (fetching) return <p className="p-rem-1/2">Loading...</p>;
   if (error) return <p>Oh no... {error.message}</p>;
 
   return (
@@ -61,7 +43,7 @@ export function ProjectOverview({}: ProjectOverviewProps) {
             Projecten:
           </h1>
           <ul>
-            {projects.map((project, index, array) => (
+            {projects.map((project) => (
               <ProjectThumb project={project}>
                 <ProjectDetail slug={project.slug} />
               </ProjectThumb>

@@ -4,22 +4,12 @@ import {
   fetchExchange,
   Provider as GqlProvider,
 } from "urql";
-import { Outlet, RouterProvider, useParams } from "react-router";
+import { Outlet, RouterProvider } from "react-router";
 import { createBrowserRouter } from "react-router-dom";
 import { Layout } from "./layouts/Layout/Layout";
 import { ErrorBoundary } from "react-error-boundary";
 import { ErrorInfo } from "react";
 import { ProjectOverview } from "./components/ProjectsOverview/ProjectsOverview";
-
-// function ProjectDetailLoader() {
-//   const { slug } = useParams();
-
-//   if (slug === undefined) {
-//     return null;
-//   }
-
-//   return <ProjectDetail slug={slug} />;
-// }
 
 const client = new Client({
   url: "https://eu-central-1.cdn.hygraph.com/content/cl7rij5cj669q01uhae8r9wkh/master",

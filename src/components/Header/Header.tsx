@@ -3,11 +3,7 @@ import { Link } from "react-router-dom";
 import { useQuery } from "urql";
 import { AnimatePresence, motion } from "framer-motion";
 import { introductionQuery } from "../../queries/introduction";
-import {
-  FADE_TRANSITION,
-  FADE_TRANSITION_DELAY,
-  fadeTransition,
-} from "../../utils/animation";
+import { FADE_TRANSITION, FADE_TRANSITION_DELAY } from "../../utils/animation";
 import Spinner from "../Spinner/Spinner";
 
 interface HeaderProps {
@@ -22,7 +18,7 @@ function Header({ className }: HeaderProps) {
     },
   });
 
-  const { data, fetching, error } = result;
+  const { data } = result;
 
   const introductionText = data?.introduction?.text;
 

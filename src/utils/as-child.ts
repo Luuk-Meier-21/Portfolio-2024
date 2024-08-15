@@ -1,4 +1,4 @@
-import React, { ComponentPropsWithRef, ElementType, ReactElement } from "react";
+import React, { ElementType } from "react";
 import Slot from "../components/Slot/Slot";
 
 type UnknownElement = ElementType | React.JSXElementConstructor<any>;

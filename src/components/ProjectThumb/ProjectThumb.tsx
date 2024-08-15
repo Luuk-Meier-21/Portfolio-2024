@@ -5,12 +5,7 @@ import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import clsx from "clsx";
 import DynamicImage from "../DynamicImage/DynamicImage";
-import {
-  DEFAULT_DURATION_MS,
-  DEFAULT_DURATION_SEC,
-  FADE_TRANSITION,
-  fadeTransition,
-} from "../../utils/animation";
+import { DEFAULT_DURATION_SEC, fadeTransition } from "../../utils/animation";
 
 export type ProjectThumbData = ProjectsListQueryQuery["projects_b"][0];
 export type ProjectImageData = ProjectThumbData["images"][0];
@@ -41,15 +36,6 @@ export function ProjectThumb({ project, children, className }: Props) {
 
   const imagesLength = project.images.length;
   const thumbImage = project.images[thumbIndex] ?? null;
-
-  const scrollInView = () => {
-    setTimeout(() => {
-      window.scrollTo({
-        top: ref.current?.offsetTop,
-        behavior: "smooth",
-      });
-    }, DEFAULT_DURATION_MS * 0.75);
-  };
 
   useEffect(() => {
     if (open === true) {

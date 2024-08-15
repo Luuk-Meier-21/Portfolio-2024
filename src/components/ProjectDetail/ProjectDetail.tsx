@@ -1,7 +1,6 @@
 import { useQuery } from "urql";
 import { ProjectQueryQuery } from "../../gql/graphql";
 import { MotionStyle } from "framer-motion";
-import clsx from "clsx";
 import InlineCollapse from "../InlineCollapse/InlineCollapse";
 import InlineList from "../InlineList/InlineList";
 import DynamicImage from "../DynamicImage/DynamicImage";
@@ -18,11 +17,10 @@ export type ProjectDescriptionBlock = ProjectDetailData["description"][0];
 
 interface ProjectDetailProps {
   slug: string;
-  className?: string;
   style?: MotionStyle;
 }
 
-export function ProjectDetail({ slug, className }: ProjectDetailProps) {
+export function ProjectDetail({ slug }: ProjectDetailProps) {
   const { slug: currentSlug } = useParams();
 
   const [result] = useQuery({
@@ -32,7 +30,7 @@ export function ProjectDetail({ slug, className }: ProjectDetailProps) {
     },
   });
 
-  const { data, fetching, error } = result;
+  const { data, error } = result;
 
   const project = data?.project_b;
   const open = currentSlug === project?.slug ?? false;
@@ -53,8 +51,6 @@ export function ProjectDetail({ slug, className }: ProjectDetailProps) {
 
   // if (fetching) return <p>Loading...</p>;
   if (error) return <p>Oh no... {error.message}</p>;
-
-  // const classes = clsx("", className);
 
   const renderDescription = (
     block: ProjectDescriptionBlock,

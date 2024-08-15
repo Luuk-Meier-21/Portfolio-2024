@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import Slot from "../Slot/Slot";
 import clsx from "clsx";
 
 interface InlineListProps {
