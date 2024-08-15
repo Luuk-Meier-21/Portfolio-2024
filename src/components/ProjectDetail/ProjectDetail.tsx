@@ -87,6 +87,7 @@ export function ProjectDetail({ slug, className }: ProjectDetailProps) {
           <figure className="grid grid-cols-1 gap-x-rem-1/2 gap-y-rem-1 md:grid-cols-2">
             {project.images.map((image) => (
               <DynamicImage
+                key={image.id}
                 src={image.url}
                 alt={image.fileName}
                 width={image.width ?? 0}
@@ -101,7 +102,9 @@ export function ProjectDetail({ slug, className }: ProjectDetailProps) {
                   "Disciplines",
                   <InlineList>
                     {project.categories.map((category) => (
-                      <li className="mb-0">{category.label}</li>
+                      <li className="mb-0" key={category.id}>
+                        {category.label}
+                      </li>
                     ))}
                   </InlineList>,
                 )}
@@ -117,6 +120,7 @@ export function ProjectDetail({ slug, className }: ProjectDetailProps) {
                   renderTableItem(
                     info.label,
                     <a
+                      key={info.id}
                       className="italic underline decoration-from-font underline-offset-[.15em] hover:no-underline"
                       target="_blank"
                       href={info.link.url}

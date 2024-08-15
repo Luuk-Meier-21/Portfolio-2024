@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { referenceQuery } from "../../queries/reference";
 import { useQuery } from "urql";
 import { AnimatePresence, motion } from "framer-motion";
-import { FADE_TRANSITION } from "../../utils/animation";
+import { FADE_TRANSITION, FADE_TRANSITION_DELAY } from "../../utils/animation";
 
 interface FooterProps {
   className?: string;
@@ -33,7 +33,7 @@ function Footer({ className }: FooterProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={FADE_TRANSITION}
+          transition={FADE_TRANSITION_DELAY}
           data-component-name="Footer"
           className={classes}
         >

@@ -3,7 +3,12 @@ import { Link } from "react-router-dom";
 import { useQuery } from "urql";
 import { AnimatePresence, motion } from "framer-motion";
 import { introductionQuery } from "../../queries/introduction";
-import { FADE_TRANSITION } from "../../utils/animation";
+import {
+  FADE_TRANSITION,
+  FADE_TRANSITION_DELAY,
+  fadeTransition,
+} from "../../utils/animation";
+import Spinner from "../Spinner/Spinner";
 
 interface HeaderProps {
   className?: string;
@@ -44,7 +49,7 @@ function Header({ className }: HeaderProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={FADE_TRANSITION}
+              transition={FADE_TRANSITION_DELAY}
               className="inline"
             >
               {introductionText}
@@ -52,13 +57,12 @@ function Header({ className }: HeaderProps) {
           ) : (
             <motion.span
               key="loading"
-              initial={{ opacity: 0, position: "absolute" }}
               animate={{ opacity: 1 }}
-              exit={{ opacity: 0, position: "absolute" }}
+              exit={{ opacity: 0 }}
               transition={FADE_TRANSITION}
-              className="inline"
+              className="absolute bottom-rem-1/2 left-rem-1/2 inline"
             >
-              Loading...
+              <Spinner />
             </motion.span>
           )}
         </AnimatePresence>

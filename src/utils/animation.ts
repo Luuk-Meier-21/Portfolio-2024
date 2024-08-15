@@ -15,10 +15,13 @@ export const dropdownTransition = (options: Transition): Transition => ({
 
 export const FADE_TRANSITION: Transition = {
   duration: DEFAULT_DURATION_SEC,
-  delay: DEFAULT_DURATION_SEC / 2,
 };
 
 export const fadeTransition = (options: Transition): Transition => ({
   ...FADE_TRANSITION,
   ...options,
+});
+
+export const FADE_TRANSITION_DELAY = fadeTransition({
+  delay: DEFAULT_DURATION_SEC,
 });

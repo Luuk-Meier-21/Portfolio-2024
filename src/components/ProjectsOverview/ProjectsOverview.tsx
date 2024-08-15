@@ -4,7 +4,11 @@ import { AnimatePresence, motion, MotionStyle } from "framer-motion";
 import { ProjectDetail } from "../ProjectDetail/ProjectDetail";
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
-import { FADE_TRANSITION, fadeTransition } from "../../utils/animation";
+import {
+  FADE_TRANSITION,
+  FADE_TRANSITION_DELAY,
+  fadeTransition,
+} from "../../utils/animation";
 import { projectsListQuery } from "../../queries/project";
 
 export interface ProjectMotionStyle {
@@ -50,7 +54,7 @@ export function ProjectOverview({}: ProjectOverviewProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={FADE_TRANSITION}
+          transition={FADE_TRANSITION_DELAY}
           className="relative mb-auto flex flex-col items-start justify-start gap-x-rem-1/2 sm:flex-row"
         >
           <h1 className="flex min-w-[25vw] text-lg sm:block lg:min-w-[20vw] lg:text-xl">
