@@ -1,7 +1,13 @@
 import { useQuery } from "urql";
 import { ProjectsListQuery } from "../../queries/project";
 import { ProjectThumb, ProjectThumbData } from "../ProjectThumb/ProjectThumb";
-import { AnimatePresence, motion, MotionStyle, Variants } from "framer-motion";
+import {
+  AnimatePresence,
+  delay,
+  motion,
+  MotionStyle,
+  Variants,
+} from "framer-motion";
 import { ProjectDetail } from "../ProjectDetail/ProjectDetail";
 import { useParams } from "react-router";
 import { ReactNode, useEffect, useState } from "react";
@@ -9,57 +15,12 @@ import { Link } from "react-router-dom";
 import Bracket from "../Bracket/Bracket";
 import Project from "../Project/Project";
 import clsx from "clsx";
+import { FADE_TRANSITION, fadeTransition } from "../../utils/animation";
 
 export interface ProjectMotionStyle {
   thumb: MotionStyle;
   detail: MotionStyle;
 }
-
-// const PROJECT_POSITION_STYLES: ProjectMotionStyle[] = [
-//   {
-//     thumb: {
-//       left: "0%",
-//     },
-//     detail: {
-//       right: "20%",
-//     },
-//   },
-//   {
-//     thumb: {
-//       left: "15%",
-//       bottom: "10%",
-//     },
-//     detail: {},
-//   },
-//   {
-//     thumb: {
-//       left: "32%",
-//       top: "20%",
-//     },
-//     detail: {},
-//   },
-//   {
-//     thumb: {
-//       right: "40%",
-//       bottom: "40%",
-//     },
-//     detail: {},
-//   },
-//   {
-//     thumb: {
-//       right: "20%",
-//       top: "10%",
-//     },
-//     detail: {},
-//   },
-//   {
-//     thumb: {
-//       right: "0%",
-//       bottom: "20%",
-//     },
-//     detail: {},
-//   },
-// ];
 
 interface ProjectOverviewProps {}
 
@@ -73,7 +34,12 @@ export function ProjectOverview({}: ProjectOverviewProps) {
 
   const { data, fetching, error } = result;
 
-  const projects = data?.projects_b;
+  const projects = data?.projects_b?.sort((a, b) => {
+    const ad = new Date(a.date);
+    const bd = new Date(b.date);
+
+    return bd.getTime() - ad.getTime();
+  });
 
   useEffect(() => {
     if (slug !== undefined) {
@@ -94,7 +60,7 @@ export function ProjectOverview({}: ProjectOverviewProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.4, delay: 0.2 }}
+          transition={fadeTransition({ delay: 0.2 })}
           className="relative mb-auto flex flex-col items-start justify-start gap-x-[1ch]"
         >
           <h1 className="flex min-w-[25%] text-lg sm:block lg:min-w-[20%] lg:text-xl">

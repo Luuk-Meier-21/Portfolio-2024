@@ -27,8 +27,8 @@ function Header({ className }: HeaderProps) {
 
   return (
     <header data-component-name="Header" className={classes}>
-      <p className="">
-        <h1 className="inline-block min-w-[25%] lg:min-w-[20%]">
+      <p className="w-full">
+        <h1 className="inline-block min-w-[25vw] lg:min-w-[20vw]">
           <Link
             className="mr-[.5em] italic decoration-from-font underline-offset-[.15em] hover:underline"
             to="/"
@@ -37,7 +37,7 @@ function Header({ className }: HeaderProps) {
           </Link>
         </h1>
         <AnimatePresence>
-          {introductionText && (
+          {introductionText ? (
             <motion.span
               key="introduction"
               initial={{ opacity: 0 }}
@@ -47,6 +47,17 @@ function Header({ className }: HeaderProps) {
               className="inline"
             >
               {introductionText}
+            </motion.span>
+          ) : (
+            <motion.span
+              key="loading"
+              initial={{ opacity: 0, position: "absolute" }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0, position: "absolute" }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+              className="inline"
+            >
+              Loading...
             </motion.span>
           )}
         </AnimatePresence>

@@ -1,14 +1,22 @@
 import clsx from "clsx";
-import { motion, Variants } from "framer-motion";
+import { motion, Transition, Variants } from "framer-motion";
 import { ReactNode } from "react";
+import { DROPDOWN_TRANSITION } from "../../utils/animation";
 
 interface CollapseProps {
   open: boolean;
   children: ReactNode | ReactNode[];
   className?: string;
+  transition?: Transition;
 }
 
-function Collapse({ open, children, className, ...props }: CollapseProps) {
+function Collapse({
+  open,
+  children,
+  className,
+  transition,
+  ...props
+}: CollapseProps) {
   const classes = clsx("flex flex-col", className);
 
   const dropdownVariants: Variants = {
@@ -27,6 +35,7 @@ function Collapse({ open, children, className, ...props }: CollapseProps) {
       variants={dropdownVariants}
       initial={open ? "open" : "closed"}
       animate={open ? "open" : "closed"}
+      transition={transition ?? DROPDOWN_TRANSITION}
       {...props}
     >
       {children}

@@ -2,15 +2,15 @@ import { ReactNode, useEffect, useRef, useState } from "react";
 import { useParams } from "react-router";
 import { ProjectsListQueryQuery } from "../../gql/graphql";
 import { Link } from "react-router-dom";
-import {
-  AnimatePresence,
-  motion,
-  MotionStyle,
-  Variant,
-  Variants,
-} from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import clsx from "clsx";
 import DynamicImage from "../DynamicImage/DynamicImage";
+import {
+  DEFAULT_DURATION_MS,
+  DEFAULT_DURATION_SEC,
+  FADE_TRANSITION,
+  fadeTransition,
+} from "../../utils/animation";
 
 export type ProjectThumbData = ProjectsListQueryQuery["projects_b"][0];
 export type ProjectImageData = ProjectThumbData["images"][0];
@@ -30,7 +30,7 @@ export function ProjectThumb({ project, children, className }: Props) {
   const [hover, setHover] = useState(false);
 
   const open = slug === project.slug;
-  const classes = clsx("flex h-full text-lg lg:text-xl", {
+  const classes = clsx("flex text-lg lg:text-xl", {
     // "self-end": index > openIndex,
   });
 
@@ -39,6 +39,7 @@ export function ProjectThumb({ project, children, className }: Props) {
     {
       underline: open,
     },
+    className,
   );
 
   const imagesLength = project.images.length;
@@ -55,7 +56,7 @@ export function ProjectThumb({ project, children, className }: Props) {
           top: ref.current?.offsetTop,
           behavior: "smooth",
         });
-      }, 200);
+      }, DEFAULT_DURATION_MS * 0.75);
     }
   }, [open, project]);
 
@@ -97,7 +98,10 @@ export function ProjectThumb({ project, children, className }: Props) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="absolute left-[50%] top-[50%] w-[1em] translate-x-[-50%] translate-y-[-50%] pt-[10%]"
+                transition={fadeTransition({
+                  duration: DEFAULT_DURATION_SEC * 0.25,
+                })}
+                className="absolute left-[50%] top-[.2em] w-[1em] translate-x-[-50%]"
               >
                 <DynamicImage
                   src={thumbImage.url}

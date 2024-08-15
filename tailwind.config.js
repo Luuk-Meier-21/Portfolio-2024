@@ -22,7 +22,7 @@ export default {
       },
       colors: {
         "brand-primary": "#231D19",
-        "brand-beige": "#FBF6F4",
+        "brand-beige": "#ffffff",
       },
     },
   },

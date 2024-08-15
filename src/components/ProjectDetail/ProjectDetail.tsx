@@ -59,7 +59,6 @@ export function ProjectDetail({ slug, className }: ProjectDetailProps) {
   const renderDescription = (
     block: ProjectDescriptionBlock,
   ): JSX.Element | undefined => {
-    console.log(block);
     switch (block.__typename) {
       case "Link":
         return <a href={block.url}>{block.label}</a>;
@@ -85,7 +84,7 @@ export function ProjectDetail({ slug, className }: ProjectDetailProps) {
     project && (
       <InlineCollapse open={isOpen} className="pointer-events-none mt-[1em]">
         <article className="pointer-events-auto mb-[2em] mt-[1em] w-full">
-          <figure className="grid grid-cols-1 gap-x-rem-1/2 gap-y-[1em] md:grid-cols-2">
+          <figure className="grid grid-cols-1 gap-x-rem-1/2 gap-y-rem-1 md:grid-cols-2">
             {project.images.map((image) => (
               <DynamicImage
                 src={image.url}
