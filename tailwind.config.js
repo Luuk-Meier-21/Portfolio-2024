@@ -21,8 +21,8 @@ export default {
         "rem-4": "4rem",
       },
       colors: {
-        "brand-primary": "#231D19",
-        "brand-beige": "#ffffff",
+        "brand-primary": "#202121",
+        "brand-beige": "#c3cdcd",
       },
     },
   },

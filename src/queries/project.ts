@@ -1,8 +1,8 @@
 import { graphql } from "../gql";
 
-export const ProjectsListQuery = graphql(`
+export const projectsListQuery = graphql(`
   query ProjectsListQuery {
-    projects_b {
+    projects_b(where: { documentInStages_some: { stage: PUBLISHED } }) {
       slug
       id
       name
@@ -30,7 +30,7 @@ export const ProjectsListQuery = graphql(`
   }
 `);
 
-export const ProjectQuery = graphql(`
+export const projectQuery = graphql(`
   query ProjectQuery($slug: String!) {
     project_b(where: { slug: $slug }) {
       slug

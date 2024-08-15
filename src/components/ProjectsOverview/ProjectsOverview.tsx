@@ -1,21 +1,11 @@
 import { useQuery } from "urql";
-import { ProjectsListQuery } from "../../queries/project";
-import { ProjectThumb, ProjectThumbData } from "../ProjectThumb/ProjectThumb";
-import {
-  AnimatePresence,
-  delay,
-  motion,
-  MotionStyle,
-  Variants,
-} from "framer-motion";
+import { ProjectThumb } from "../ProjectThumb/ProjectThumb";
+import { AnimatePresence, motion, MotionStyle } from "framer-motion";
 import { ProjectDetail } from "../ProjectDetail/ProjectDetail";
 import { useParams } from "react-router";
-import { ReactNode, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import Bracket from "../Bracket/Bracket";
-import Project from "../Project/Project";
-import clsx from "clsx";
+import { useEffect, useState } from "react";
 import { FADE_TRANSITION, fadeTransition } from "../../utils/animation";
+import { projectsListQuery } from "../../queries/project";
 
 export interface ProjectMotionStyle {
   thumb: MotionStyle;
@@ -27,7 +17,7 @@ interface ProjectOverviewProps {}
 export function ProjectOverview({}: ProjectOverviewProps) {
   const { slug } = useParams();
   const [result] = useQuery({
-    query: ProjectsListQuery,
+    query: projectsListQuery,
   });
 
   const [openIndex, setOpenIndex] = useState(-1);
@@ -60,17 +50,19 @@ export function ProjectOverview({}: ProjectOverviewProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={fadeTransition({ delay: 0.2 })}
-          className="relative mb-auto flex flex-col items-start justify-start gap-x-[1ch]"
+          transition={FADE_TRANSITION}
+          className="relative mb-auto flex flex-col items-start justify-start gap-x-rem-1/2 sm:flex-row"
         >
-          <h1 className="flex min-w-[25%] text-lg sm:block lg:min-w-[20%] lg:text-xl">
+          <h1 className="flex min-w-[25vw] text-lg sm:block lg:min-w-[20vw] lg:text-xl">
             Projecten:
           </h1>
-          {projects.map((project, index, array) => (
-            <ProjectThumb project={project}>
-              <ProjectDetail slug={project.slug} />
-            </ProjectThumb>
-          ))}
+          <ul>
+            {projects.map((project, index, array) => (
+              <ProjectThumb project={project}>
+                <ProjectDetail slug={project.slug} />
+              </ProjectThumb>
+            ))}
+          </ul>
         </motion.main>
       )}
     </AnimatePresence>

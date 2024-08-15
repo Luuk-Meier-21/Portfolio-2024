@@ -30,34 +30,35 @@ export function ProjectThumb({ project, children, className }: Props) {
   const [hover, setHover] = useState(false);
 
   const open = slug === project.slug;
-  const classes = clsx("flex text-lg lg:text-xl", {
-    // "self-end": index > openIndex,
-  });
+  const classes = clsx("flex w-full text-lg lg:text-xl", className);
 
   const textClasses = clsx(
     "italic decoration-from-font mr-[.5em] hover:underline underline-offset-[.15em]",
     {
       underline: open,
     },
-    className,
   );
 
   const imagesLength = project.images.length;
   const thumbImage = project.images[thumbIndex] ?? null;
+
+  const scrollInView = () => {
+    setTimeout(() => {
+      window.scrollTo({
+        top: ref.current?.offsetTop,
+        behavior: "smooth",
+      });
+    }, DEFAULT_DURATION_MS * 0.75);
+  };
 
   useEffect(() => {
     if (open === true) {
       setTimeout(() => {
         setThumbIndex(0);
       }, 100);
-
-      setTimeout(() => {
-        window.scrollTo({
-          top: ref.current?.offsetTop,
-          behavior: "smooth",
-        });
-      }, DEFAULT_DURATION_MS * 0.75);
     }
+
+    // scrollInView();
   }, [open, project]);
 
   useEffect(() => {
@@ -76,7 +77,7 @@ export function ProjectThumb({ project, children, className }: Props) {
   }, [hover, thumbIndex, imagesLength]);
 
   return (
-    <section key={project.id} className={classes}>
+    <li key={project.id} className={classes}>
       <Link
         onMouseEnter={() => {
           setHover(true);
@@ -91,7 +92,7 @@ export function ProjectThumb({ project, children, className }: Props) {
       </Link>
       <div className="flex">
         <span className="inline-flex">{"{"}</span>
-        <figure className="relative h-full w-[1.5em]">
+        <motion.figure className="relative h-full w-[1.5em]">
           <AnimatePresence>
             {!open && thumbImage && (
               <motion.div
@@ -112,11 +113,11 @@ export function ProjectThumb({ project, children, className }: Props) {
               </motion.div>
             )}
           </AnimatePresence>
-        </figure>
+        </motion.figure>
 
         {children}
         <span className="inline-flex self-end">{"},"}</span>
       </div>
-    </section>
+    </li>
   );
 }

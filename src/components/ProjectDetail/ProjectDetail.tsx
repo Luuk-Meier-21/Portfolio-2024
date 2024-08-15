@@ -1,5 +1,4 @@
 import { useQuery } from "urql";
-import { ProjectQuery } from "../../queries/project";
 import { ProjectQueryQuery } from "../../gql/graphql";
 import { MotionStyle } from "framer-motion";
 import clsx from "clsx";
@@ -9,6 +8,7 @@ import DynamicImage from "../DynamicImage/DynamicImage";
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import Collapse from "../Collapse/Collapse";
+import { projectQuery } from "../../queries/project";
 
 export type ProjectDetailData = Exclude<
   ProjectQueryQuery["project_b"],
@@ -26,7 +26,7 @@ export function ProjectDetail({ slug, className }: ProjectDetailProps) {
   const { slug: currentSlug } = useParams();
 
   const [result] = useQuery({
-    query: ProjectQuery,
+    query: projectQuery,
     variables: {
       slug,
     },
@@ -63,7 +63,7 @@ export function ProjectDetail({ slug, className }: ProjectDetailProps) {
       case "Link":
         return <a href={block.url}>{block.label}</a>;
       case "Paragraph":
-        return <p className="text-md mb-[1em]">{block.content?.text}</p>;
+        return <p className="mb-[1em] text-md">{block.content?.text}</p>;
     }
   };
 
@@ -94,8 +94,8 @@ export function ProjectDetail({ slug, className }: ProjectDetailProps) {
               />
             ))}
           </figure>
-          <div className="mt-rem-1/2 grid min-h-[25vh] auto-rows-min grid-cols-2 gap-rem-1/2 md:grid-cols-6">
-            <ul className="text-md col-span-2 mb-[1em] grid auto-rows-min grid-cols-subgrid gap-y-rem-1/4 md:col-span-3 md:mb-0">
+          <div className="mt-rem-1/2 grid min-h-[var(--row-height)] auto-rows-min grid-cols-2 gap-rem-1/2 md:grid-cols-6">
+            <ul className="col-span-2 mb-[1em] grid auto-rows-min grid-cols-subgrid gap-y-rem-1/4 text-md md:col-span-3 md:mb-0">
               {project.categories.length > 0 &&
                 renderTableItem(
                   "Disciplines",

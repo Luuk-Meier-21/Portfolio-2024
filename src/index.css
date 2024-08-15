@@ -10,4 +10,5 @@ html, body {
 
 :root {
   color-scheme: dark;
+  --row-height: 20vh;
 }

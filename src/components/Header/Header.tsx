@@ -1,8 +1,9 @@
 import clsx from "clsx";
 import { Link } from "react-router-dom";
 import { useQuery } from "urql";
-import { IntroductionQuery } from "../../queries/introduction";
 import { AnimatePresence, motion } from "framer-motion";
+import { introductionQuery } from "../../queries/introduction";
+import { FADE_TRANSITION } from "../../utils/animation";
 
 interface HeaderProps {
   className?: string;
@@ -10,7 +11,7 @@ interface HeaderProps {
 
 function Header({ className }: HeaderProps) {
   const [result] = useQuery({
-    query: IntroductionQuery,
+    query: introductionQuery,
     variables: {
       id: "clzqy6bd9k9zc07un8a6h6vjr",
     },
@@ -21,14 +22,14 @@ function Header({ className }: HeaderProps) {
   const introductionText = data?.introduction?.text;
 
   const classes = clsx(
-    "flex text-lg lg:text-xl grid-rows-subgrid grid-cols-subgrid",
+    "flex text-lg lg:text-xl min-h-[var(--row-height)] grid-rows-subgrid grid-cols-subgrid",
     className,
   );
 
   return (
     <header data-component-name="Header" className={classes}>
       <p className="w-full">
-        <h1 className="inline-block min-w-[25vw] lg:min-w-[20vw]">
+        <h1 className="mr-rem-1/2 inline-block min-w-[25vw] lg:min-w-[20vw]">
           <Link
             className="mr-[.5em] italic decoration-from-font underline-offset-[.15em] hover:underline"
             to="/"
@@ -43,7 +44,7 @@ function Header({ className }: HeaderProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.4, delay: 0.2 }}
+              transition={FADE_TRANSITION}
               className="inline"
             >
               {introductionText}
@@ -54,7 +55,7 @@ function Header({ className }: HeaderProps) {
               initial={{ opacity: 0, position: "absolute" }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0, position: "absolute" }}
-              transition={{ duration: 0.4, delay: 0.2 }}
+              transition={FADE_TRANSITION}
               className="inline"
             >
               Loading...
