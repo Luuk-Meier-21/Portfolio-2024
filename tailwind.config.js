@@ -3,6 +3,7 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     fontSize: {
+      sm: ["18px", { lineHeight: "1.2", letterSpacing: "-0.011em" }],
       md: ["22px", { lineHeight: "1.2", letterSpacing: "-0.011em" }],
       lg: ["32px", { lineHeight: "1", letterSpacing: "-0.0145em" }],
       xl: ["46px", { lineHeight: "1", letterSpacing: "-0.0145em" }],

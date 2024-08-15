@@ -59,7 +59,9 @@ export function ProjectDetail({ slug }: ProjectDetailProps) {
       case "Link":
         return <a href={block.url}>{block.label}</a>;
       case "Paragraph":
-        return <p className="mb-[1em] text-md">{block.content?.text}</p>;
+        return (
+          <p className="text-sm mb-[1em] sm:text-md">{block.content?.text}</p>
+        );
     }
   };
 
@@ -92,7 +94,7 @@ export function ProjectDetail({ slug }: ProjectDetailProps) {
             ))}
           </figure>
           <div className="mt-rem-1/2 grid min-h-[var(--row-height)] auto-rows-min grid-cols-2 gap-rem-1/2 md:grid-cols-6">
-            <ul className="col-span-2 mb-[1em] grid auto-rows-min grid-cols-subgrid gap-y-rem-1/4 text-md md:col-span-3 md:mb-0">
+            <ul className="text-sm col-span-2 mb-[1em] grid auto-rows-min grid-cols-subgrid gap-y-rem-1/4 sm:text-md md:col-span-3 md:mb-0">
               {project.categories.length > 0 &&
                 renderTableItem(
                   "Disciplines",
@@ -141,7 +143,7 @@ export function ProjectDetail({ slug }: ProjectDetailProps) {
                 )}
                 {project.description.slice(1).length > 0 && (
                   <button
-                    className="text-md hover:no-underline"
+                    className="text-sm hover:no-underline sm:text-md"
                     onClick={() => setExpandedDescription(!expandedDescription)}
                   >
                     <span className="mr-rem-1/2 italic underline decoration-from-font underline-offset-[.15em] hover:no-underline">

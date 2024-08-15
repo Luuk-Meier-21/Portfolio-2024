@@ -5,7 +5,7 @@
 html, body {
   scrollbar-gutter: stable;
 
-  @apply text-md font-serif bg-brand-primary text-brand-beige antialiased;
+  @apply text-sm sm:text-md font-serif bg-brand-primary text-brand-beige antialiased;
 } 
 
 :root {
