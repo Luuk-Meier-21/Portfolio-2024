@@ -31,7 +31,7 @@ function DynamicImage({
   const isPortrait = height >= width;
 
   const classes = clsx(
-    "w-full relative z-20",
+    "w-full h-full scale-[1.1] relative z-20",
     {
       "aspect-[4/3]": aspect === "4/3" && isLandscape,
       "aspect-[3/4]": aspect === "4/3" && isPortrait,
@@ -46,7 +46,10 @@ function DynamicImage({
   }, []);
 
   return (
-    <figure data-component-name="DynamicImage" className="relative">
+    <figure
+      data-component-name="DynamicImage"
+      className="relative overflow-hidden"
+    >
       <figure aria-hidden role="presentation" className="absolute inset-0">
         {loader}
       </figure>
