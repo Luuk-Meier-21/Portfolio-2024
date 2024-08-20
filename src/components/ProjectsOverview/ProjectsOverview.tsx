@@ -4,7 +4,6 @@ import { AnimatePresence, motion, MotionStyle } from "framer-motion";
 import { ProjectDetail } from "../ProjectDetail/ProjectDetail";
 import { FADE_TRANSITION_DELAY } from "../../utils/animation";
 import { projectsListQuery } from "../../queries/project";
-import clsx from "clsx";
 
 export interface ProjectMotionStyle {
   thumb: MotionStyle;
