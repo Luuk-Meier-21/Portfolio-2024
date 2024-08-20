@@ -9,7 +9,6 @@ interface ProjectIndexProps {
 export function Layout({ children }: ProjectIndexProps) {
   return (
     <div className="flex min-h-[100dvh]">
-      {/* //test */}
       <div className="relative flex flex-1 flex-col gap-y-[1em] px-rem-1/2 py-rem-1/2 text-lg text-xl sm:py-[.3rem] lg:text-xl">
         <Header />
         {children}

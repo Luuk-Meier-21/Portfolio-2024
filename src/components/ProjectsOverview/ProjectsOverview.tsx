@@ -4,6 +4,7 @@ import { AnimatePresence, motion, MotionStyle } from "framer-motion";
 import { ProjectDetail } from "../ProjectDetail/ProjectDetail";
 import { FADE_TRANSITION_DELAY } from "../../utils/animation";
 import { projectsListQuery } from "../../queries/project";
+import clsx from "clsx";
 
 export interface ProjectMotionStyle {
   thumb: MotionStyle;
@@ -44,7 +45,9 @@ export function ProjectOverview({}: ProjectOverviewProps) {
           </h1>
           <ul>
             {projects.map((project) => (
-              <ProjectThumb project={project}>
+              <ProjectThumb project={project} className={clsx({
+                "opacity-10": 
+              })}>
                 <ProjectDetail slug={project.slug} />
               </ProjectThumb>
             ))}

@@ -10,6 +10,7 @@ import { Layout } from "./layouts/Layout/Layout";
 import { ErrorBoundary } from "react-error-boundary";
 import { ErrorInfo } from "react";
 import { ProjectOverview } from "./components/ProjectsOverview/ProjectsOverview";
+import NotFound from "./components/NotFound/NotFound";
 
 const client = new Client({
   url: "https://eu-central-1.cdn.hygraph.com/content/cl7rij5cj669q01uhae8r9wkh/master",
@@ -24,6 +25,11 @@ const router = createBrowserRouter([
         <Outlet />
       </Layout>
     ),
+    errorElement: (
+      <Layout>
+        <NotFound />
+      </Layout>
+    ),
     children: [
       {
         path: "/",
@@ -33,6 +39,11 @@ const router = createBrowserRouter([
             path: "/:slug",
           },
         ],
+        errorElement: (
+          <Layout>
+            <NotFound />
+          </Layout>
+        ),
       },
     ],
   },
@@ -49,7 +60,10 @@ function App() {
       onError={onError}
     >
       <GqlProvider value={client}>
-        <RouterProvider router={router} />
+        <RouterProvider
+          fallbackElement={<div>router error</div>}
+          router={router}
+        />
       </GqlProvider>
     </ErrorBoundary>
   );

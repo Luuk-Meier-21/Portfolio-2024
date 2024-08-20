@@ -30,14 +30,14 @@ function Header({ className }: HeaderProps) {
   return (
     <header data-component-name="Header" className={classes}>
       <p className="w-full">
-        <h1 className="mr-rem-1/2 inline-block min-w-[25vw] lg:min-w-[20vw]">
+        <span className="mr-rem-1/2 inline-block min-w-[25vw] lg:min-w-[20vw]">
           <Link
             className="mr-[.5em] italic decoration-from-font underline-offset-[.15em] hover:underline"
             to="/"
           >
             Luuk Meier
           </Link>
-        </h1>
+        </span>
         <AnimatePresence>
           {introductionText ? (
             <motion.span
