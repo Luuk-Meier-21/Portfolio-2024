@@ -45,9 +45,7 @@ export function ProjectOverview({}: ProjectOverviewProps) {
           </h1>
           <ul>
             {projects.map((project) => (
-              <ProjectThumb project={project} className={clsx({
-                "opacity-10": 
-              })}>
+              <ProjectThumb project={project}>
                 <ProjectDetail slug={project.slug} />
               </ProjectThumb>
             ))}
