@@ -7,11 +7,6 @@ export const projectsListQuery = graphql(`
       id
       name
       date
-      thumb {
-        id
-        fileName
-        url
-      }
       images {
         url
         id
@@ -51,7 +46,6 @@ export const projectQuery = graphql(`
           url
         }
       }
-      client
       images {
         url
         id
