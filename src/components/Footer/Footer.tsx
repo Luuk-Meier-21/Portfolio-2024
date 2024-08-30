@@ -21,7 +21,7 @@ function Footer({ className }: FooterProps) {
   const reference = data?.reference;
 
   const classes = clsx(
-    "flex gap-x-rem-1/2 min-h-[var(--row-height)] items-end text-lg lg:text-xl ",
+    "flex gap-x-rem-1/2 relative min-h-[var(--row-height)] items-end text-lg lg:text-xl ",
     className,
   );
 
@@ -37,12 +37,12 @@ function Footer({ className }: FooterProps) {
           data-component-name="Footer"
           className={classes}
         >
-          <div className="hidden min-w-[25vw] sm:block lg:min-w-[20vw]">
+          <div className="absolute bottom-0 left-0 hidden sm:block">
             Contact:
           </div>
           <a
             href={reference.url}
-            className="italic decoration-from-font underline-offset-[.15em] hover:underline"
+            className="w-full text-center italic decoration-from-font underline-offset-[.15em] hover:underline"
           >
             {reference.label}
           </a>

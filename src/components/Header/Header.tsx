@@ -23,16 +23,16 @@ function Header({ className }: HeaderProps) {
   const introductionText = data?.introduction?.text;
 
   const classes = clsx(
-    "flex text-lg lg:text-xl min-h-[var(--row-height)] grid-rows-subgrid grid-cols-subgrid",
+    "flex text-lg lg:text-xl relative min-h-[var(--row-height)] grid-rows-subgrid grid-cols-subgrid",
     className,
   );
 
   return (
     <header data-component-name="Header" className={classes}>
-      <p className="w-full">
-        <span className="mr-rem-1/2 inline-block min-w-[25vw] lg:min-w-[20vw]">
+      <p className="w-full text-center indent-[5em] sm:indent-[calc(25vw+.5rem)] lg:indent-[calc(20vw+.5rem)]">
+        <span className="absolute left-0 top-0 flex text-left indent-0">
           <Link
-            className="mr-[.5em] italic decoration-from-font underline-offset-[.15em] hover:underline"
+            className="italic decoration-from-font underline-offset-[.15em] hover:underline"
             to="/"
           >
             Luuk Meier

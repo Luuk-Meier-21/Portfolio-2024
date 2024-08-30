@@ -39,10 +39,10 @@ export function ProjectOverview({}: ProjectOverviewProps) {
           transition={FADE_TRANSITION_DELAY}
           className="relative mb-auto flex flex-col items-start justify-start gap-x-rem-1/2 sm:flex-row"
         >
-          <h1 className="flex min-w-[25vw] text-lg sm:block lg:min-w-[20vw] lg:text-xl">
+          <h1 className="left-0 top-0 w-full text-center text-lg sm:absolute sm:w-[unset] sm:text-left lg:text-xl">
             Projecten:
           </h1>
-          <ul>
+          <ul className="flex w-full flex-col items-center justify-center self-center">
             {projects.map((project) => (
               <ProjectThumb project={project}>
                 <ProjectDetail slug={project.slug} />

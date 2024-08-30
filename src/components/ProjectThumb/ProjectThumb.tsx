@@ -25,7 +25,7 @@ export function ProjectThumb({ project, children, className }: Props) {
   const [hover, setHover] = useState(false);
 
   const open = slug === project.slug;
-  const classes = clsx("flex w-full text-lg lg:text-xl", className);
+  const classes = clsx("flex text-lg lg:text-xl", className);
 
   const textClasses = clsx(
     "italic decoration-from-font mr-[.5em] hover:underline underline-offset-[.15em]",
