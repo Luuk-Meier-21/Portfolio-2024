@@ -46,7 +46,7 @@ function Header({ className }: HeaderProps) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={FADE_TRANSITION_DELAY}
-              className="inline"
+              className="left-0 inline"
             >
               {introductionText}
             </motion.span>
@@ -56,7 +56,7 @@ function Header({ className }: HeaderProps) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={FADE_TRANSITION}
-              className="absolute bottom-rem-1/2 left-rem-1/2 inline"
+              className="fixed bottom-rem-1/2 left-rem-1/2 inline"
             >
               <Spinner />
             </motion.span>
